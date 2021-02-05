@@ -3,6 +3,7 @@ import "./App.less";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import MemberWelcome from "./pages/MemberWelcome/index";
+import LogIn from "./pages/LogIn";
 
 const App = () => (
 	<div className="app">
@@ -11,6 +12,7 @@ const App = () => (
 				<div className="content">
 					<Switch>
 						<Route path="/" exact component={MemberWelcome} />
+						<Route path="/login" component={LogIn} />
 					</Switch>
 				</div>
 			</div>
