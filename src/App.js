@@ -2,21 +2,23 @@ import "./App.less";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import MemberWelcome from "./pages/MemberWelcome/index";
-import LogIn from "./pages/LogIn";
-import SignUp from "./pages/SignUp";
-import Navbar from './shared/components/Navbar/index';
+import UserWelcome from "./pages/user/pages/UserWelcome/index";
+import LogIn from "./pages/auth/LogIn";
+import Register from "./pages/auth/Register";
+import Navbar from "./shared/components/Navbar/index";
+import AboutUs from './pages/AboutUs/index';
 
 const App = () => (
 	<div className="app">
-		<Navbar />
 		<Router>
+			<Navbar />
 			<div>
 				<div className="content">
 					<Switch>
-						<Route path="/" exact component={MemberWelcome} />
+						<Route path="/" exact component={UserWelcome} />
 						<Route path="/login" component={LogIn} />
-						<Route path="/signup" component={SignUp} />
+						<Route path="/register" component={Register} />
+						<Route path="/aboutUs" component={AboutUs} />
 					</Switch>
 				</div>
 			</div>
