@@ -1,11 +1,7 @@
-import React from 'react'
+import style from "./style.module.css";
 
-function UserProfile() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+const UserProfile = () => {
+	return <div></div>;
+};
 
 export default UserProfile;
