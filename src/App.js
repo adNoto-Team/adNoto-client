@@ -5,12 +5,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserWelcome from "./pages/user/pages/UserWelcome/index";
 import LogIn from "./pages/auth/LogIn";
 import Register from "./pages/auth/Register";
-import Navbar from './shared/components/Navbar/index';
+import Navbar from "./shared/components/Navbar/index";
 
 const App = () => (
 	<div className="app">
-		<Navbar />
 		<Router>
+		<Navbar />
 			<div>
 				<div className="content">
 					<Switch>
