@@ -26,7 +26,7 @@ const contentStyle = {
 	background: "#364d79",
 };
 
-function MemberWelcome() {
+function UserWelcome() {
 	return (
 		<>
 			<Layout>
@@ -68,4 +68,4 @@ function MemberWelcome() {
 	);
 }
 
-export default MemberWelcome;
+export default UserWelcome;
