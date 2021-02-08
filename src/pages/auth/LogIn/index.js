@@ -2,7 +2,7 @@ import { Form, Input, Button, Checkbox, Col, Row } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./style.module.css";
 
-function LogIn() {
+const LogIn =() => {
 	return (
 		<Form className={styles.loginForm} initialValues={{ remember: true }}>
 			<Form.Item
