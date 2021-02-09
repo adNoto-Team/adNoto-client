@@ -5,5 +5,9 @@
   padding-bottom: 29px;
 }
 .coverDesc {
-    padding: 20px;
+  padding: 20px;
+}
+
+.ant-layout{
+  background-color: #EBF2F9 !important; 
 }
