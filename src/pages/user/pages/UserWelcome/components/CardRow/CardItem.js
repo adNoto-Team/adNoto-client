@@ -12,7 +12,7 @@ const CardItem = ({ title, imdb, coverImg }) => {
 					style={{ width: 200 }}
 					cover={<img alt="content-cover" src={coverImg} />}
 				>
-					<Meta title={title} description={imdb} />
+					<Meta title={title} description={`imdb: ${imdb}`} />
 				</Card>
 			</Col>
 		</>
