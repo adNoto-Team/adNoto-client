@@ -1,10 +1,11 @@
 .menuBar {
+  overflow: hidden !important;
+  background-color: #fff;
   padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
   overflow: auto;
   box-shadow: 0 0 30px #f3f1f1;
   height: 58px;
-    
 }
 
 .logo {
@@ -44,7 +45,6 @@
 .menuCon .leftMenu {
   float: left;
   margin: 10px 0 10px 0;
-  /* padding-bottom: 5px */
 }
 
 .menuCon .leftMenu .ant-menu-submenu-arrow{
@@ -54,8 +54,6 @@
 
 .ant-menu-item .ant-menu-item-only-child {
   margin-top: 10px;
-  display: none;
-  color: red !;
 }
 
 .menuCon .rightMenu {
