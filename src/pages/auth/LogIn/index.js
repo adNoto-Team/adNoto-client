@@ -1,10 +1,27 @@
-import { Form, Input, Button, Checkbox, Col, Row } from "antd";
+import { Form, Input, Button, Checkbox, Col, Row, Alert } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./style.module.css";
 
-const LogIn =() => {
+import { useContext, useEffect } from "react";
+import Context from "../../../context/Context";
+
+const LogIn = () => {
+	const { login, message } = useContext(Context);
+
+	const onFinish = (values) => {
+		console.log("Received values of form: ", values);
+		login({
+			username: values.username,
+			password: values.password,
+		});
+	};
+
 	return (
-		<Form className={styles.loginForm} initialValues={{ remember: true }}>
+		<Form
+			onFinish={onFinish}
+			className={styles.loginForm}
+			initialValues={{ remember: true }}
+		>
 			<Form.Item
 				name="username"
 				rules={[{ required: true, message: "Please input your Username!" }]}
@@ -53,8 +70,10 @@ const LogIn =() => {
 					</Col>
 				</Row>
 			</Form.Item>
+
+			{message !== "" && <Alert message={message} type="error" />}
 		</Form>
 	);
-}
+};
 
 export default LogIn;

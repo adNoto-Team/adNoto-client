@@ -8,6 +8,9 @@ import {
 	Divider,
 } from "antd";
 
+import { useContext, useEffect } from "react";
+import Context from "../../../context/Context";
+
 import { QuestionCircleOutlined } from "@ant-design/icons";
 
 import styles from "./style.module.css";
@@ -15,25 +18,38 @@ import styles from "./style.module.css";
 const { Title } = Typography;
 
 const SignUp = () => {
-	// const onFinish = (values) => {
-	// 	console.log("Received values of form: ", values);
-	// };
+	const { signup, message, token } = useContext(Context);
 
+	const onFinish = (values) => {
+		console.log("Received values of form: ", values);
+		signup({
+			username: values.username,
+			password: values.password,
+			name: values.name,
+			surname: values.surname,
+			mail: values.email,
+		});
+	};
+	useEffect(() => {
+		const a = localStorage.getItem("token");
+		console.log("token:" + a + "aaa");
+	}, []);
 	return (
 		<Form
 			className={styles.formItemLayout}
-			//form={form}
 			name="register"
-			//onFinish={onFinish}
+			onFinish={onFinish}
 			initialValues={{
 				residence: ["zhejiang", "hangzhou", "xihu"],
 				prefix: "86",
 			}}
 			scrollToFirstError
 		>
-			<Title style={{ color: "#1890ff", textAlign: "center" }}>Sign Up</Title>
+			<Title style={{ color: "#1890ff", textAlign: "center" }}>
+				Sign Up{message}
+				{token}
+			</Title>
 
-			{/* Email */}
 			<Form.Item
 				className={styles.formItem}
 				name="email"
