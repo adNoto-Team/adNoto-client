@@ -1,0 +1,59 @@
+ 
+.forYouChart , .lastCommentedChart {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  width: fit-content;
+  margin: auto;
+}
+.forYouChart p, .lastCommentedChart p{
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 0px;
+  padding: 4px;
+  color: #f9c22e;
+}
+hr{
+    background-color: #f9c22e;
+    color:#f9c22e
+}
+ 
+
+
+.Footer {
+  background-color: #172121 !important;
+  display: flex;
+  justify-content: center !important;
+  flex-direction: column;
+  color: #f9f9f9 !important;
+  align-items: center;
+  padding-top: 30px !important;
+  font-size: 18px;
+}
+
+.Footer li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 18px;
+}
+.Footer ul {
+  padding: 0 !important;
+}
+.Footer div  {
+  color: #7d7979;
+  padding: 9px;
+  line-height: 9px;
+}
+
+.Menu {
+  background-color: transparent !important;
+  color: #f9f9f9 !important;
+  border-bottom: none !important;
+}
+.Header {
+  border-bottom: none !important;
+}
+.ant-input-affix-wrapper {
+  background-color: red !important;
+}

@@ -2,7 +2,7 @@ import "./App.less";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import MemberWelcome from "./pages/MemberWelcome/index";
+import Landing from "./pages/landing";
 
 const App = () => (
 	<div className="app">
@@ -10,7 +10,7 @@ const App = () => (
 			<div>
 				<div className="content">
 					<Switch>
-						<Route path="/" exact component={MemberWelcome} />
+						<Route path="/" exact component={Landing} />
 					</Switch>
 				</div>
 			</div>
