@@ -1,13 +1,3 @@
-.contentCover {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 29px;
-}
-.coverDesc {
-  padding: 20px;
-}
-
-.ant-layout{
-  background-color: #EBF2F9 !important; 
+.ant-layout {
+  background-color: #ebf2f9 !important;
 }

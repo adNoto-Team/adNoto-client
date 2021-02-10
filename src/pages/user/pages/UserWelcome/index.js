@@ -1,13 +1,10 @@
-import { Layout, Row, Col, Divider, Card, Typography, Button } from "antd";
-import Comments from "./components/Comments";
+import { Layout, Col } from "antd";
 
-import style from "./style.module.css";
-import "./style.module.css";
-import CardRow from "./components/CardRow";
+import ContentRow from './components/ContentRow/index';
+import RandomContent from "./components/RandomContet";
+import ContentBilbord from "./components/ContentBilbord";
 
-const { Title, Text } = Typography;
 const { Content } = Layout;
-const { Meta } = Card;
 
 const currentlyWatchingContents = [
 	{
@@ -20,7 +17,7 @@ const currentlyWatchingContents = [
 		title: "The Office",
 		imdb: "8.5",
 		coverImg:
-			"https://m.media-amazon.com/images/M/MV5BMDNkOTE4NDQtMTNmYi00MWE0LWE4ZTktYTc0NzhhNWIzNzJiXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1",
 	},
 	{
 		title: "Seinfeld",
@@ -46,7 +43,7 @@ const movieContents = [
 		title: "The Office",
 		imdb: "8.5",
 		coverImg:
-			"https://m.media-amazon.com/images/M/MV5BMDNkOTE4NDQtMTNmYi00MWE0LWE4ZTktYTc0NzhhNWIzNzJiXkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_UX182_CR0,0,182,268_AL_.jpg",
+			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1",
 	},
 	{
 		title: "Seinfeld",
@@ -61,50 +58,51 @@ const movieContents = [
 			"https://m.media-amazon.com/images/M/MV5BNDVkYjU0MzctMWRmZi00NTkxLTgwZWEtOWVhYjZlYjllYmU4XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_UY268_CR0,0,182,268_AL_.jpg",
 	},
 ];
+const lastComentedContent = {
+	title: "The Office",
+	episodeName: "Season 3 Episode 5",
+	imdb: "8.5",
+	coverImg:
+		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1",
+};
+const trendContent = {
+	title: "Disenchantment",
+	episodeName: "Season 4 Episode 1",
+	imdb: "7.2",
+	coverImg:
+		"https://m.media-amazon.com/images/M/MV5BMzlkYzk0YzItM2I0ZC00NmE5LTljMGYtNTY2ZTVhMzA5OWJjXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_.jpg",
+};
 
 const UserWelcome = () => {
 	return (
 		<>
 			<Col lg={{ span: 12, offset: 6 }}>
-				<Layout span={12} offset={6} className={style.container}>
+				<Layout span={12} offset={6}>
 					<Content>
 						{/* Last comented content section */}
-						<Row style={{ paddingTop: 30 }}>
-							<Col flex={2} className={style.contentCover}>
-								<Card
-									hoverable
-									style={{ width: 240 }}
-									cover={
-										<img
-											alt="content-cover"
-											src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1"
-										/>
-									}
-								>
-									<Meta title="The Office" description="Season 3 Episode 5" />
-								</Card>
-							</Col>
-							<Col flex={3} className={style.coverDesc}>
-								<Title>The Office</Title>
-								<Row justify={"space-between"}>
-									<Text>Season 3 Episode 5</Text>
-									<Text>Top Liked Comments</Text>
-								</Row>
-								<Comments />
-								<Button
-									type="primary"
-									size={"large"}
-									style={{ float: "right" }}
-								>
-									Continue to Comment!
-								</Button>
-							</Col>
-						</Row>
-						<CardRow
+						<ContentBilbord
+							title={lastComentedContent.title}
+							subTitle={lastComentedContent.episodeName}
+							bilbordDesc={"Last comented content"}
+							coverImg={lastComentedContent.coverImg}
+						/>
+						{/* Card Covers Section */}
+						<ContentRow
 							title={"Currently Watching"}
 							contents={currentlyWatchingContents}
 						/>
-						<CardRow title={"Movie"} contents={movieContents} />
+
+						<ContentRow title={"Movie"} contents={movieContents} />
+						{/* Random Content */}
+						<RandomContent />
+						<ContentBilbord
+							title={trendContent.title}
+							subTitle={trendContent.episodeName}
+							bilbordDesc={"Trend - 'New Season'"}
+							coverImg={trendContent.coverImg}
+							rotation={"right"}
+						/>
+						<ContentRow title={"Series"} contents={movieContents} />
 					</Content>
 				</Layout>
 			</Col>
