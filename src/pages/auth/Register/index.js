@@ -1,19 +1,22 @@
 import {
 	Form,
 	Input,
-	Tooltip,
 	Checkbox,
 	Button,
 	Typography,
 	Divider,
+	Row,
+	Col,
+	Alert,
 } from "antd";
+
+//import adnoto from "../../../assets/images/adnoto.png";
 
 import { useContext, useEffect } from "react";
 import Context from "../../../context/Context";
 
-import { QuestionCircleOutlined } from "@ant-design/icons";
-
 import styles from "./style.module.css";
+import Tab from "../Components/Tab";
 
 const { Title } = Typography;
 
@@ -30,30 +33,25 @@ const SignUp = () => {
 			mail: values.email,
 		});
 	};
-	useEffect(() => {
-		const a = localStorage.getItem("token");
-		console.log("token:" + a + "aaa");
-	}, []);
+
 	return (
 		<Form
 			className={styles.formItemLayout}
 			name="register"
 			onFinish={onFinish}
-			initialValues={{
-				residence: ["zhejiang", "hangzhou", "xihu"],
-				prefix: "86",
-			}}
 			scrollToFirstError
 		>
-			<Title style={{ color: "#1890ff", textAlign: "center" }}>
-				Sign Up{message}
-				{token}
+			<Title
+				style={{ color: "#1890ff", textAlign: "center", marginBottom: "0px" }}
+			>
+				Sign Up
 			</Title>
-
+			<span style={{ marginTop: "0px" }}>
+				<Tab />
+			</span>
 			<Form.Item
 				className={styles.formItem}
 				name="email"
-				label="E-mail"
 				rules={[
 					{
 						type: "email",
@@ -65,21 +63,13 @@ const SignUp = () => {
 					},
 				]}
 			>
-				<Input />
+				<Input placeholder="E-mail adress" />
 			</Form.Item>
 
 			{/* Username */}
 			<Form.Item
 				className={styles.formItem}
 				name="username"
-				label={
-					<span>
-						Username&nbsp;
-						<Tooltip title="What do you want others to call you?">
-							<QuestionCircleOutlined />
-						</Tooltip>
-					</span>
-				}
 				rules={[
 					{
 						required: true,
@@ -88,14 +78,13 @@ const SignUp = () => {
 					},
 				]}
 			>
-				<Input />
+				<Input placeholder="Username" />
 			</Form.Item>
 
 			{/* Name */}
 			<Form.Item
 				className={styles.formItem}
 				name="name"
-				label={<span>Name</span>}
 				rules={[
 					{
 						required: true,
@@ -104,14 +93,13 @@ const SignUp = () => {
 					},
 				]}
 			>
-				<Input />
+				<Input placeholder="First Name" />
 			</Form.Item>
 
 			{/* Surname */}
 			<Form.Item
 				className={styles.formItem}
 				name="surname"
-				label={<span>Surname</span>}
 				rules={[
 					{
 						required: true,
@@ -120,14 +108,13 @@ const SignUp = () => {
 					},
 				]}
 			>
-				<Input />
+				<Input placeholder="Surname" />
 			</Form.Item>
 
 			{/* Password */}
 			<Form.Item
 				className={styles.formItem}
 				name="password"
-				label="Password"
 				rules={[
 					{
 						required: true,
@@ -136,14 +123,14 @@ const SignUp = () => {
 				]}
 				hasFeedback
 			>
-				<Input.Password />
+				<Input.Password placeholder="Password" />
 			</Form.Item>
 
 			{/* Password confirm */}
 			<Form.Item
 				className={styles.formItem}
+				style={{ marginBottom: "0px" }}
 				name="confirm"
-				label="Confirm Password"
 				dependencies={["password"]}
 				hasFeedback
 				rules={[
@@ -163,11 +150,14 @@ const SignUp = () => {
 					}),
 				]}
 			>
-				<Input.Password />
+				<Input.Password placeholder="Confirm Password" />
 			</Form.Item>
 
 			{/* Agreement */}
-			<Divider orientation="center" style={{ marginBottom: "-10px" }}>
+			<Divider
+				orientation="center"
+				style={{ marginTop: "2px", marginBottom: "-5px" }}
+			>
 				<Form.Item
 					className={styles.formItem}
 					name="agreement"
@@ -189,11 +179,25 @@ const SignUp = () => {
 			</Divider>
 
 			<Form.Item style={{}}>
-				<Divider orientation="center">
-					<Button type="primary" htmlType="submit">
-						Register
-					</Button>
-				</Divider>
+				<Row>
+					<Col span={24}>
+						<Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+							Register
+						</Button>
+					</Col>
+				</Row>
+
+				<Row style={{ marginTop: "5px" }}>
+					<Col span={24}>
+						{message !== "" && (
+							<Alert
+								style={{ textAlign: "center" }}
+								message={message}
+								type="error"
+							/>
+						)}
+					</Col>
+				</Row>
 			</Form.Item>
 		</Form>
 	);
