@@ -1,10 +1,9 @@
-import { Layout, Row, Col, Card, Typography, Button, Image } from "antd";
-import Comments from "./components/Comments";
+import { Layout, Row, Col, Card, Typography, Button } from "antd";
 
 import style from "./style.module.css";
-import "./style.module.css";
+import Comments from "./components/Comments";
 import CardRow from "./components/CardRow";
-import { FireTwoTone } from "@ant-design/icons";
+import RandomContent from "./components/RandomContet";
 
 const { Title, Text } = Typography;
 const { Content } = Layout;
@@ -108,19 +107,8 @@ const UserWelcome = () => {
 						/>
 						<CardRow title={"Movie"} contents={movieContents} />
 						{/* Random Content */}
-						<Row style={{ paddingTop: 30 }}>
-							<div className={style.randomContent}>
-								<img
-									className={style.randomContentImg}
-									src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80"
-									alt=""
-								/>
-								<Button className={style.randomContetButton} size={"large"}>
-									<FireTwoTone /> Radom Content
-								</Button>
-							</div>
-						</Row>
-						<CardRow title={"Movie"} contents={movieContents} />
+						<RandomContent />
+						<CardRow title={"Series"} contents={movieContents} />
 					</Content>
 				</Layout>
 			</Col>
