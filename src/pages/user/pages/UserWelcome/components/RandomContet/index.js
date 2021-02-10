@@ -2,11 +2,10 @@ import style from "./style.module.css";
 import { Row, Button } from "antd";
 import { FireTwoTone } from "@ant-design/icons";
 
-
 const RandomContent = () => {
 	return (
 		<>
-			<Row style={{ paddingTop: 30 }}>
+			<Row style={{ paddingTop: 40 }}>
 				<div className={style.randomContent}>
 					<img
 						className={style.randomContentImg}
