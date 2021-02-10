@@ -16,7 +16,7 @@ const CardRow = ({ title, contents }) => {
 					<Title level={3}>{title}</Title>
 				</Divider>
 
-				<Row gutter={[50, 50]}>
+				<Row gutter={[50, 50]} className={style.cardRow}>
 					{contents.map((content) => (
 						<CardItem
 							title={content.title}

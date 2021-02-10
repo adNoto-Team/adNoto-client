@@ -5,17 +5,16 @@ const { Meta } = Card;
 
 const CardItem = ({ title, imdb, coverImg }) => {
 	return (
-		<>
-			<Col className={style.gutterRow} xs={12} sm={8} md={6} lg={8} xl={6}>
-				<Card
-					hoverable
-					style={{ width: 200 }}
-					cover={<img alt="content-cover" src={coverImg} />}
-				>
-					<Meta title={title} description={`imdb: ${imdb}`} />
-				</Card>
-			</Col>
-		</>
+		<Col className={style.unset} xs={12} sm={12} md={8} lg={8} xl={6}>
+			<Card
+				hoverable
+				style={{ width: 200 }}
+				className={style.cardItem}
+				cover={<img alt="content-cover" src={coverImg} />}
+			>
+				<Meta title={title} description={`imdb: ${imdb}`} />
+			</Card>
+		</Col>
 	);
 };
 

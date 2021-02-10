@@ -8,7 +8,8 @@
 
 @media only screen and (max-width: 768px) {
   .ant-spin-container {
-    width: 380px !important;
+    width: 100% !important;
+    max-width: auto;
   }
   .ant-comment-content-detail {
     width: unset !important;

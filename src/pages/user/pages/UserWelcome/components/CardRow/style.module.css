@@ -1,5 +1,16 @@
-.cardRowCenter{
-    display: flex;
-    justify-content: center;
-    
+.cardRowCenter {
+  display: flex;
+  justify-content: center;
+}
+
+.cardRow {
+  margin-left: unset !important;
+  margin-right: unset !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .cardRow {
+    margin-left: 15px !important;
+    margin-right: 15px !important;
+  }
 }
