@@ -24,7 +24,6 @@ const SignUp = () => {
 	const { signup, message, token } = useContext(Context);
 
 	const onFinish = (values) => {
-		console.log("Received values of form: ", values);
 		signup({
 			username: values.username,
 			password: values.password,

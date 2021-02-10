@@ -13,6 +13,7 @@ import styles from "./style.module.css";
 import Tab from "../Components/Tab";
 import { useContext } from "react";
 import Context from "../../../context/Context";
+import { redirect } from "react-router-dom";
 
 const { Title } = Typography;
 const LogIn = () => {

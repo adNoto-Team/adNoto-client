@@ -17,6 +17,7 @@
   display: inline-block;
   font-size: 20px;
   padding: 19px 20px;
+  color: black;
   /* text-transform: capitalize; */
 }
 
@@ -47,7 +48,7 @@
   margin: 10px 0 10px 0;
 }
 
-.menuCon .leftMenu .ant-menu-submenu-arrow{
+.menuCon .leftMenu .ant-menu-submenu-arrow {
   margin-top: 10px;
   display: none;
 }
@@ -98,12 +99,12 @@
   padding: 0;
 }
 
-.barsMenu>span {
+.barsMenu > span {
   display: block;
 }
 
-.ant-drawer-body .ant-menu-horizontal>.ant-menu-item,
-.ant-drawer-body .ant-menu-horizontal>.ant-menu-submenu {
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item,
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-submenu {
   display: inline-block;
   width: 100%;
 }
@@ -112,7 +113,7 @@
   border-bottom: none;
 }
 
-.ant-drawer-body .ant-menu-horizontal>.ant-menu-item:hover {
+.ant-drawer-body .ant-menu-horizontal > .ant-menu-item:hover {
   border-bottom-color: transparent;
 }
 
