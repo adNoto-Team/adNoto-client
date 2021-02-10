@@ -100,6 +100,7 @@ const UserWelcome = () => {
 							subTitle={trendContent.episodeName}
 							bilbordDesc={"Trend - 'New Season'"}
 							coverImg={trendContent.coverImg}
+							rotation={"right"}
 						/>
 						<ContentRow title={"Series"} contents={movieContents} />
 					</Content>

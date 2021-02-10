@@ -17,6 +17,10 @@
   margin-left: 10px;
 }
 
+.rotation {
+  flex-direction: row-reverse;
+}
+
 @media only screen and (max-width: 480px) {
   .bilbordDesc {
     display: none;

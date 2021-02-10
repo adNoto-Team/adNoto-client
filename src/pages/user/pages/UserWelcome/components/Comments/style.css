@@ -2,10 +2,6 @@
   width: 600px !important;
 }
 
-.ant-comment-content-detail {
-  width: 620px !important;
-}
-
 @media only screen and (max-width: 768px) {
   .ant-spin-container {
     width: 100% !important;

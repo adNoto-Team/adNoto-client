@@ -6,10 +6,19 @@ import Comments from "../Comments";
 const { Title, Text } = Typography;
 const { Meta } = Card;
 
-const ContentBilbord = ({ title, subTitle, bilbordDesc, coverImg }) => {
+const ContentBilbord = ({
+	title,
+	subTitle,
+	bilbordDesc,
+	coverImg,
+	rotation = "left",
+}) => {
 	return (
 		<>
-			<Row style={{ paddingTop: 40 }}>
+			<Row
+				className={rotation == "right" ? style.rotation : null}
+				style={{ paddingTop: 40 }}
+			>
 				<Col flex={2} className={style.contentCover}>
 					<Card
 						hoverable
