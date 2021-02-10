@@ -1,0 +1,17 @@
+.randomContentImg {
+  width: 100%;
+  height: auto;
+  max-height: 128px;
+  object-fit: none;
+  object-position: 50% 57%;
+}
+
+.randomContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.randomContetButton {
+  position: absolute;
+}

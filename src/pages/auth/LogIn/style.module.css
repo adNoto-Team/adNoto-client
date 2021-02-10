@@ -1,0 +1,17 @@
+.loginForm {
+  max-width: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.loginFormForgot {
+  float: right;
+}
+.loginFormButton {
+  width: 100%;
+  margin-bottom: 5px;
+}
+.formItem {
+  margin-bottom: 3px;
+}

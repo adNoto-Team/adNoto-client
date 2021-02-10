@@ -1,0 +1,28 @@
+.contentCover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 29px;
+}
+.coverDesc {
+  padding: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+}
+
+.bilbordDesc {
+  margin-left: 10px;
+}
+
+.rotation {
+  flex-direction: row-reverse;
+}
+
+@media only screen and (max-width: 480px) {
+  .bilbordDesc {
+    display: none;
+  }
+}
