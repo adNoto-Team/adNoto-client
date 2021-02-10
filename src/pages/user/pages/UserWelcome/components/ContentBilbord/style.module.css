@@ -7,3 +7,18 @@
 .coverDesc {
   padding: 20px;
 }
+
+.title {
+  display: flex;
+  align-items: baseline;
+}
+
+.bilbordDesc {
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+  .bilbordDesc {
+    display: none;
+  }
+}

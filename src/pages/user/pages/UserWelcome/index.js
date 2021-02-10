@@ -83,7 +83,7 @@ const UserWelcome = () => {
 						<ContentBilbord
 							title={lastComentedContent.title}
 							subTitle={lastComentedContent.episodeName}
-							bilbordDesc={"Top Liked Comments"}
+							bilbordDesc={"Last comented content"}
 							coverImg={lastComentedContent.coverImg}
 						/>
 						{/* Card Covers Section */}

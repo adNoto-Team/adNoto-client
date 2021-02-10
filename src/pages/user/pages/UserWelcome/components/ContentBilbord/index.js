@@ -20,10 +20,14 @@ const ContentBilbord = ({ title, subTitle, bilbordDesc, coverImg }) => {
 					</Card>
 				</Col>
 				<Col flex={3} className={style.coverDesc}>
-					<Title>{title}</Title>
+					<div className={style.title}>
+						<Title>{title}</Title>
+						<Text className={style.bilbordDesc}>{bilbordDesc}</Text>
+					</div>
+
 					<Row justify={"space-between"}>
 						<Text>{subTitle}</Text>
-						<Text>{bilbordDesc}</Text>
+						<Text>Top Liked Comments</Text>
 					</Row>
 					<Comments />
 					<Button type="primary" size={"large"} style={{ float: "right" }}>
