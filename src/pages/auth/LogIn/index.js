@@ -1,10 +1,21 @@
-import { Form, Input, Button, Checkbox, Col, Row, Alert } from "antd";
+import {
+	Form,
+	Input,
+	Button,
+	Checkbox,
+	Col,
+	Row,
+	Alert,
+	Typography,
+} from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./style.module.css";
-
-import { useContext, useEffect } from "react";
+import Tab from "../Components/Tab";
+import { useContext } from "react";
 import Context from "../../../context/Context";
+import { redirect } from "react-router-dom";
 
+const { Title } = Typography;
 const LogIn = () => {
 	const { login, message } = useContext(Context);
 
@@ -22,6 +33,14 @@ const LogIn = () => {
 			className={styles.loginForm}
 			initialValues={{ remember: true }}
 		>
+			<Title
+				style={{ color: "#1890ff", textAlign: "center", marginBottom: "0px" }}
+			>
+				Login
+			</Title>
+			<span>
+				<Tab />
+			</span>
 			<Form.Item
 				name="username"
 				rules={[{ required: true, message: "Please input your Username!" }]}
@@ -36,9 +55,10 @@ const LogIn = () => {
 				name="password"
 				rules={[{ required: true, message: "Please input your Password!" }]}
 				className={styles.formItem}
+				style={{ marginBottom: "4px" }}
 			>
 				<Input
-					prefix={<LockOutlined className="site-form-item-icon" />}
+					prefix={<LockOutlined className="	siteFormItemIcon" />}
 					type="password"
 					placeholder="Password"
 				/>
@@ -56,22 +76,27 @@ const LogIn = () => {
 				<a className={styles.loginFormForgot} href="">
 					Forgot password
 				</a>
-			</Form.Item>
-
-			<Form.Item>
-				<Row>
-					<Col span={9} className={styles.loginButton}>
-						<Button type="primary" htmlType="submit">
+				<Row style={{ marginTop: "5px" }}>
+					<Col span={24} className={styles.loginButton}>
+						<Button type="primary" htmlType="submit" style={{ width: "100%" }}>
 							Log in
 						</Button>
 					</Col>
-					<Col span={15}>
-						Or <a href="">register now!</a>{" "}
+				</Row>
+				<Row style={{ marginTop: "5px" }}>
+					<Col span={24}>
+						{message !== "" && (
+							<Alert
+								style={{ textAlign: "center" }}
+								message={message}
+								type="error"
+							/>
+						)}
 					</Col>
 				</Row>
 			</Form.Item>
 
-			{message !== "" && <Alert message={message} type="error" />}
+			<Form.Item></Form.Item>
 		</Form>
 	);
 };

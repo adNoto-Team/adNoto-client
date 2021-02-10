@@ -5,6 +5,7 @@ import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
 import { Drawer, Button, Col } from "antd";
 import style from "./style.module.css";
+import logo from "../../../assets/images/thebird.png";
 
 const Navbar = () => {
 	const [isVisible, setIsVisiblee] = useState("");
@@ -21,7 +22,10 @@ const Navbar = () => {
 		<Col>
 			<nav className={style.menuBar}>
 				<div className={style.logo}>
-					<Link to="/">adNoto</Link>
+					<Link to="/">
+						<img src={logo}></img>
+						adNoto
+					</Link>
 				</div>
 				<div className={style.menuCon}>
 					<div className={style.leftMenu}>
