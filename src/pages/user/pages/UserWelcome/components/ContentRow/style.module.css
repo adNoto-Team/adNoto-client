@@ -1,15 +1,10 @@
-.cardRowCenter {
-  display: flex;
-  justify-content: center;
-}
-
-.cardRow {
+.contentRow {
   margin-left: unset !important;
   margin-right: unset !important;
 }
 
 @media only screen and (max-width: 480px) {
-  .cardRow {
+  .contentRow {
     margin-left: 15px !important;
     margin-right: 15px !important;
   }

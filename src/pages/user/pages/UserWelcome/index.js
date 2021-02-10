@@ -1,6 +1,6 @@
 import { Layout, Col } from "antd";
 
-import CardRow from "./components/CardRow";
+import ContentRow from './components/ContentRow/index';
 import RandomContent from "./components/RandomContet";
 import ContentBilbord from "./components/ContentBilbord";
 
@@ -87,12 +87,12 @@ const UserWelcome = () => {
 							coverImg={lastComentedContent.coverImg}
 						/>
 						{/* Card Covers Section */}
-						<CardRow
+						<ContentRow
 							title={"Currently Watching"}
 							contents={currentlyWatchingContents}
 						/>
 
-						<CardRow title={"Movie"} contents={movieContents} />
+						<ContentRow title={"Movie"} contents={movieContents} />
 						{/* Random Content */}
 						<RandomContent />
 						<ContentBilbord
@@ -101,7 +101,7 @@ const UserWelcome = () => {
 							bilbordDesc={"Trend - 'New Season'"}
 							coverImg={trendContent.coverImg}
 						/>
-						<CardRow title={"Series"} contents={movieContents} />
+						<ContentRow title={"Series"} contents={movieContents} />
 					</Content>
 				</Layout>
 			</Col>
