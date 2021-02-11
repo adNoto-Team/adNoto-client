@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-import { Menu, Grid, Button } from "antd";
+import { Menu, Grid, Button, Space, message, Avatar } from "antd";
 import { useContext, useEffect, useState } from "react";
+import { DownOutlined, UserOutlined } from "@ant-design/icons";
+import Dropdown from "./RightMenuDropDown";
 import Context from "../../../context/Context";
 
 const SubMenu = Menu.SubMenu;
@@ -9,18 +11,8 @@ const MenuItemGroup = Menu.ItemGroup;
 const { useBreakpoint } = Grid;
 
 const RightMenu = () => {
-	const { token } = useContext(Context);
+	const { isToken } = useContext(Context);
 	const { md } = useBreakpoint();
-
-	const [isToken, setIsToken] = useState(false);
-	const handleOnClick = () => {
-		localStorage.removeItem("token");
-		setIsToken(false);
-	};
-
-	useEffect(() => {
-		if (localStorage.getItem("token")) setIsToken(true);
-	}, [token]);
 
 	return (
 		<div>
@@ -38,10 +30,11 @@ const RightMenu = () => {
 			) : (
 				<div>
 					<Menu mode={md ? "horizontal" : "inline"}>
+						<Menu.Item key="app" style={{ margin: "0", height: "100%" }}>
+							<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+						</Menu.Item>
 						<Menu.Item key="app">
-							<Button onClick={handleOnClick} href="/">
-								Log Out
-							</Button>
+							<Dropdown></Dropdown>
 						</Menu.Item>
 					</Menu>
 				</div>

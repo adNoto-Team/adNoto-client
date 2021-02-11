@@ -8,20 +8,21 @@ import {
 	Row,
 	Col,
 	Alert,
+	message,
 } from "antd";
 
-//import adnoto from "../../../assets/images/adnoto.png";
+import logo from "../../../assets/images/adnoto.png";
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Context from "../../../context/Context";
 
 import styles from "./style.module.css";
-import Tab from "../Components/Tab";
 
 const { Title } = Typography;
 
 const SignUp = () => {
-	const { signup, message, token } = useContext(Context);
+	const { signup, dbMessage, token } = useContext(Context);
+	const [isOnFinish, setIsOnFinish] = useState(false);
 
 	const onFinish = (values) => {
 		signup({
@@ -31,7 +32,20 @@ const SignUp = () => {
 			surname: values.surname,
 			mail: values.email,
 		});
+		setIsOnFinish(true);
 	};
+
+	useEffect(() => {
+		if (dbMessage !== "" && isOnFinish) {
+			message.warning(dbMessage);
+			setIsOnFinish(false);
+		}
+		if (token && isOnFinish) {
+			message.success("Registration Succesful");
+			message.success("Login Succesfull");
+			setIsOnFinish(false);
+		}
+	}, [dbMessage, token, isOnFinish]);
 
 	return (
 		<Form
@@ -40,14 +54,19 @@ const SignUp = () => {
 			onFinish={onFinish}
 			scrollToFirstError
 		>
-			<Title
+			<img
+				src={logo}
+				alt="adNoto Icon"
+				onError="this.src = 'https://i.hizliresim.com/wp2lva.png'"
+			/>
+			{/* <Title
 				style={{ color: "#1890ff", textAlign: "center", marginBottom: "0px" }}
 			>
 				Sign Up
-			</Title>
-			<span style={{ marginTop: "0px" }}>
+			</Title> */}
+			{/* <span style={{ marginTop: "0px" }}>
 				<Tab />
-			</span>
+			</span> */}
 			<Form.Item
 				className={styles.formItem}
 				name="email"
@@ -180,23 +199,30 @@ const SignUp = () => {
 			<Form.Item style={{}}>
 				<Row>
 					<Col span={24}>
-						<Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+						<Button
+							htmlType="submit"
+							style={{
+								backgroundColor: "#52c41a",
+								width: "100%",
+								color: "white",
+							}}
+						>
 							Register
 						</Button>
 					</Col>
 				</Row>
 
-				<Row style={{ marginTop: "5px" }}>
+				{/* <Row style={{ marginTop: "5px" }}>
 					<Col span={24}>
-						{message !== "" && (
+						{dbMessage !== "" && (
 							<Alert
 								style={{ textAlign: "center" }}
-								message={message}
+								message={dbMessage}
 								type="error"
 							/>
 						)}
 					</Col>
-				</Row>
+				</Row> */}
 			</Form.Item>
 		</Form>
 	);
