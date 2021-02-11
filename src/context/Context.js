@@ -5,7 +5,7 @@ const MovieContext = createContext(null);
 
 export const Provider = ({ children }) => {
 	const [movieData, setMovieData] = useState([]);
-	const [message, setMessage] = useState("");
+	const [dbMessage, setDbMessage] = useState("");
 	const [token, setToken] = useState("");
 
 	useEffect(() => {
@@ -16,10 +16,10 @@ export const Provider = ({ children }) => {
 		const { data } = await db.post("/signup", userData);
 
 		if (!data.token) {
-			setMessage(data.message);
+			setDbMessage(data.meessage);
 		}
 		if (data.token) {
-			setMessage("");
+			setDbMessage("");
 			localStorage.setItem("token", data.token);
 			setToken(data.token);
 		}
@@ -28,10 +28,10 @@ export const Provider = ({ children }) => {
 		const { data } = await db.post("/login", userData);
 
 		if (!data.token) {
-			setMessage(data.message);
+			setDbMessage(data.message);
 		}
 		if (data.token) {
-			setMessage("");
+			setDbMessage("");
 			localStorage.setItem("token", data.token);
 			setToken(data.token);
 		}
@@ -40,7 +40,7 @@ export const Provider = ({ children }) => {
 	const values = {
 		signup,
 		login,
-		message,
+		dbMessage,
 		token,
 		movieData,
 	};

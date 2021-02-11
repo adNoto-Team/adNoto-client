@@ -19,7 +19,7 @@ const RightMenu = () => {
 	};
 
 	useEffect(() => {
-		if (token) setIsToken(true);
+		if (localStorage.getItem("token")) setIsToken(true);
 	}, [token]);
 
 	return (
