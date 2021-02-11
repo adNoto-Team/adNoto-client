@@ -1,10 +1,9 @@
 import { Menu, Dropdown, Button, message, Space, Tooltip } from "antd";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import Context from "../../../context/Context";
 const RightMenuDropDown = ({ a }) => {
-	const { setIsToken } = useContext(Context);
-
+	const { setIsToken, user, getUser } = useContext(Context);
 	function handleButtonClick(e) {
 		message.info("Click on left button.");
 		console.log("click left button", e);
@@ -18,6 +17,11 @@ const RightMenuDropDown = ({ a }) => {
 		setIsToken(false);
 		message.success("Logout Succesful");
 	};
+	useEffect(() => {
+		if (!user.username) {
+			getUser();
+		}
+	}, [user]);
 
 	const menu = (
 		<Menu onClick={handleMenuClick}>
@@ -38,7 +42,7 @@ const RightMenuDropDown = ({ a }) => {
 					overlay={menu}
 					size={"middle"}
 				>
-					@Username
+					{user.username ? user.username : "USERNOTFOUND"}
 				</Dropdown.Button>
 			</Space>
 		</div>
