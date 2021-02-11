@@ -25,4 +25,10 @@
     max-width: auto;
     width: unset !important;
   }
+
+  .spoilerAlert {
+    top: 21%;
+    right: 5%;
+    width: 84%;
+  }
 }

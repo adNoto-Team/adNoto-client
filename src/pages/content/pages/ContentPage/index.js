@@ -25,7 +25,7 @@ const content = {
 const ContentPage = () => {
 	return (
 		<>
-			<Col lg={{ span: 16, offset: 4 }} style={{ paddingTop: 30 }}>
+			<Col lg={{ span: 16, offset: 4 }}>
 				<div span={12} offset={6}>
 					<img className={style.coverImg} src={content.coverImg} alt="" />
 				</div>
@@ -34,7 +34,7 @@ const ContentPage = () => {
 				<Layout>
 					<Content>
 						<Row>
-							{/* Side Bar */}
+							{/* Card Section */}
 							<Col flex={2} className={style.contentCover}>
 								<Card
 									hoverable
@@ -50,11 +50,11 @@ const ContentPage = () => {
 									<VideoCameraFilled /> Watch Trailer
 								</Button>
 							</Col>
-							{/* Right Bar */}
+							{/* Desc Section */}
 							<Col
 								flex={3}
-								className={style.coverDesc}
-								style={{ paddingTop: 40 }}
+								className={style.descSection}
+								style={{ paddingTop: 40}}
 							>
 								<div className={style.title}>
 									<Title>{content.title}</Title>

@@ -3,6 +3,7 @@
   width: 100%;
   object-fit: cover;
   object-position: 50% 61%;
+  padding-top: 30px;
 }
 
 .contentCover {
@@ -34,15 +35,32 @@
 }
 
 .seasonRow {
-  padding: 20px 0 20px 0 ;
+  padding: 20px 0 20px 0;
   width: 100%;
   max-width: 600px;
 }
-.seasonRow Button{
+.seasonRow Button {
   margin: 0 5px 5px 0;
 }
 
+@media only screen and (max-width: 480px) {
+  .descSection {
+    padding-left: 11px;
+    top: -200px;
+  }
+  .contentCover {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 29px;
+  }
 
+  .coverImg {
+    filter: blur(4px);
+    padding-top: unset;
+  }
+}
 
 /* TODO Watch Trailer Button Hover Not working properly  */
 /* .watchTrailerButton :hover {
