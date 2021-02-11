@@ -1,6 +1,6 @@
 import { Menu, Dropdown, Button, message, Space, Tooltip } from "antd";
 import { useContext } from "react";
-import { Link, Router, Switch, Route, Redirect } from "react-router-dom";
+
 import Context from "../../../context/Context";
 const RightMenuDropDown = ({ a }) => {
 	const { setIsToken } = useContext(Context);
@@ -24,11 +24,9 @@ const RightMenuDropDown = ({ a }) => {
 			<Menu.Item key="1">1st menu item</Menu.Item>
 			<Menu.Item key="2">2nd menu item</Menu.Item>
 			<Menu.Item key="3">
-				<Link exact to="/">
-					<Button type="primary" onClick={handleOnClick} size={"small"}>
-						Log Out
-					</Button>
-				</Link>
+				<Button type="primary" onClick={handleOnClick} size={"small"}>
+					Log Out
+				</Button>
 			</Menu.Item>
 		</Menu>
 	);
