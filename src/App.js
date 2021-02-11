@@ -10,8 +10,8 @@ import Navbar from "./shared/components/Navbar/index";
 import AboutUs from "./pages/AboutUs/index";
 import { useEffect } from "react";
 import { Provider } from "./context/Context";
-
-const App = () => {
+import  Landing  from "./pages/landing";
+ const App = () => {
 	return (
 		<div className="app">
 			<Provider>
@@ -20,14 +20,16 @@ const App = () => {
 					<div>
 						<div className="content">
 							<Switch>
-								<Route path="/" exact component={UserWelcome} />
+								<Route path="/" exact component={Landing} />
 								<Route path="/login" component={LogIn} />
 								<Route path="/register" component={Register} />
 								<Route path="/aboutUs" component={AboutUs} />
 							</Switch>
 						</div>
 					</div>
+					
 				</Router>
+
 			</Provider>
 		</div>
 	);

@@ -8,3 +8,10 @@
   background-color: #172121 !important;
   color: #f9f9f9 !important;
 }
+.landingImage {
+  width: 100%;
+  background-image: url("https://wallpaperaccess.com/full/1343405.jpg");
+}
+.landingImage:before{
+  background-image: linear-gradient(red , #EBF2F9);
+}
