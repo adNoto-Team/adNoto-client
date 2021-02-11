@@ -1,9 +1,10 @@
 .bottomBar{
-    background-color: #2c3440;
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    justify-content: center;
     height: 58px;
-    padding: 0 20px;
-    border-top: 1px solid rebeccapurple;
-    overflow: auto;
-    box-shadow: 0 0 30px #f3f1f1;
-
+    padding: 20px 20px;
+    color: gray;
+     overflow: auto;
+ 
 }
