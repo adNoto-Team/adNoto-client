@@ -5,7 +5,7 @@ import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
 import { Drawer, Button, Col } from "antd";
 import style from "./style.module.css";
-import logo from "../../../assets/images/thebird.png";
+import logo from "../../../assets/images/adNoto-logo.png";
 
 const Navbar = () => {
 	const [isVisible, setIsVisiblee] = useState("");
