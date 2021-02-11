@@ -11,8 +11,9 @@ const MenuItemGroup = Menu.ItemGroup;
 const { useBreakpoint } = Grid;
 
 const RightMenu = () => {
-	const { isToken } = useContext(Context);
+	const { isToken, user } = useContext(Context);
 	const { md } = useBreakpoint();
+	console.log(user);
 
 	return (
 		<div>
@@ -31,7 +32,18 @@ const RightMenu = () => {
 				<div>
 					<Menu mode={md ? "horizontal" : "inline"}>
 						<Menu.Item key="app" style={{ margin: "0", height: "100%" }}>
-							<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+							{user.avatar === null ? (
+								<Avatar
+									src={
+										"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+									}
+								/>
+							) : (
+								<Avatar
+									src={"https://api.adnoto.co/" + user.avatar}
+									alt={"userPic"}
+								/>
+							)}
 						</Menu.Item>
 						<Menu.Item key="app">
 							<Dropdown></Dropdown>

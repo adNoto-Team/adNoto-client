@@ -24,7 +24,7 @@ const LeftMenu = () => {
 				</MenuItemGroup>
 			</SubMenu>
 			<Menu.Item key="alipay">
-				<a href="">Contact Us</a>
+				<Link to="/">Contact Us</Link>
 			</Menu.Item>
 		</Menu>
 	);

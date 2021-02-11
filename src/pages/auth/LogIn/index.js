@@ -12,18 +12,16 @@ import {
 } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import styles from "./style.module.css";
-import Tab from "../Components/Tab";
+
 import { useContext, useEffect, useState } from "react";
 import Context from "../../../context/Context";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import logo from "../../../assets/images/adnoto.png";
-import { getKeyThenIncreaseKey } from "antd/lib/message";
 
 const { Title } = Typography;
 const LogIn = () => {
 	const { login, dbMessage, token } = useContext(Context);
 	const [isOnFinish, setIsOnFinish] = useState(false);
-
 	const onFinish = (values) => {
 		login({
 			username: values.username,
