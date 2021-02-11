@@ -51,7 +51,6 @@ const data = [
 	},
 ];
 
-
 const commentItem = () => {
 	return (
 		<>

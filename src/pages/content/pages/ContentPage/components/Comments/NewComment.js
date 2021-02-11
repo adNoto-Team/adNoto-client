@@ -4,10 +4,11 @@ import moment from "moment";
 
 const { TextArea } = Input;
 
+{/* TODO FIX replay number */}
 const CommentList = ({ comments }) => (
 	<List
 		dataSource={comments}
-		header={`${comments.length} ${comments.length > 1 ? "replies" : "reply"}`}
+		// header={`${comments.length} ${comments.length > 1 ? "replies" : "reply"}`}
 		itemLayout="horizontal"
 		renderItem={(props) => <Comment {...props} />}
 	/>
