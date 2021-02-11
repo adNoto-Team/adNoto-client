@@ -24,11 +24,9 @@ const RightMenuDropDown = ({ a }) => {
 			<Menu.Item key="1">1st menu item</Menu.Item>
 			<Menu.Item key="2">2nd menu item</Menu.Item>
 			<Menu.Item key="3">
-				<Link exact to="/">
-					<Button type="primary" onClick={handleOnClick} size={"small"}>
-						Log Out
-					</Button>
-				</Link>
+				<Button type="primary" onClick={handleOnClick} size={"small"}>
+					Log Out
+				</Button>
 			</Menu.Item>
 		</Menu>
 	);
