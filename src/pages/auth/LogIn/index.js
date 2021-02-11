@@ -54,15 +54,7 @@ const LogIn = () => {
 				alt="adNoto Icon"
 				onError="this.src = 'https://i.hizliresim.com/wp2lva.png'"
 			/>
-			{/* <Title
-				style={{ color: "#1890ff", textAlign: "center", marginBottom: "0px" }}
-			>
-				Login
-			</Title> */}
 
-			{/* <span>
-				<Tab />
-			</span> */}
 			<Form.Item
 				name="username"
 				rules={[{ required: true, message: "Please input your Username!" }]}
