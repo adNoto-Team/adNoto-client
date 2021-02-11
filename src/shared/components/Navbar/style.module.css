@@ -12,6 +12,10 @@
   width: 150px;
   float: left;
 }
+.logo img {
+  width: 23px;
+  float: left;
+}
 
 .logo a {
   display: inline-block;
