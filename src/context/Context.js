@@ -7,6 +7,7 @@ export const Provider = ({ children }) => {
 	const [movieData, setMovieData] = useState([]);
 	const [dbMessage, setDbMessage] = useState("");
 	const [token, setToken] = useState("");
+	const [isToken, setIsToken] = useState(false);
 
 	useEffect(() => {
 		setMovieData([]);
@@ -16,7 +17,7 @@ export const Provider = ({ children }) => {
 		const { data } = await db.post("/signup", userData);
 
 		if (!data.token) {
-			setDbMessage(data.meessage);
+			setDbMessage(data.message);
 		}
 		if (data.token) {
 			setDbMessage("");
@@ -29,6 +30,7 @@ export const Provider = ({ children }) => {
 
 		if (!data.token) {
 			setDbMessage(data.message);
+			console.log(data.message);
 		}
 		if (data.token) {
 			setDbMessage("");
@@ -37,12 +39,19 @@ export const Provider = ({ children }) => {
 		}
 	};
 
+	useEffect(() => {
+		if (localStorage.getItem("token")) setIsToken(true);
+	}, [token]);
+
 	const values = {
 		signup,
 		login,
 		dbMessage,
+		setDbMessage,
 		token,
 		movieData,
+		isToken,
+		setIsToken,
 	};
 
 	return (

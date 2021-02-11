@@ -37,11 +37,11 @@ const LogIn = () => {
 			message.warning(dbMessage);
 			setIsOnFinish(false);
 		}
-		if (token) {
+		if (token && isOnFinish) {
 			message.success("Login Successful");
-			<Redirect exact to="/" />;
+			setIsOnFinish(false);
 		}
-	}, [dbMessage, token]);
+	}, [dbMessage, token, isOnFinish]);
 
 	return (
 		<Form
@@ -49,7 +49,11 @@ const LogIn = () => {
 			className={styles.loginForm}
 			initialValues={{ remember: true }}
 		>
-			<img src={logo} />
+			<img
+				src={logo}
+				alt="adNoto Icon"
+				onError="this.src = 'https://i.hizliresim.com/wp2lva.png'"
+			/>
 			{/* <Title
 				style={{ color: "#1890ff", textAlign: "center", marginBottom: "0px" }}
 			>
