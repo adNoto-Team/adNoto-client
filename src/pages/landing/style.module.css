@@ -1,11 +1,7 @@
-.ant-layout{
-  background-color: #f0f2f5 !important; 
-}
-.Layout{
-  background-color: #EBF2F9
-}
+ 
+ 
 .Footer {
-  background-color: #172121 !important;
+  background-color: #989999 !important;
   color: #f9f9f9 !important;
 }
 .landingImage {
@@ -14,4 +10,7 @@
 }
 .landingImage:before{
   background-image: linear-gradient(red , #EBF2F9);
+}
+.ant-layout {
+  background-color: #ebf2f9 !important;
 }

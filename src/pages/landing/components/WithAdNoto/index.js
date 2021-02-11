@@ -1,4 +1,4 @@
-import React, { memo, useState} from "react";
+import React, { memo, useState } from "react";
 import {
 	CommentOutlined,
 	SaveOutlined,
@@ -7,12 +7,10 @@ import {
 	StarOutlined,
 	CaretRightOutlined,
 } from "@ant-design/icons";
-import { Row, Col, Divider, Typography } from "antd";
-
+import { Row, Col, Divider, Typography, Card } from "antd";
+import style from "./styles.module.css";
 const { Title } = Typography;
 function WithAdNoto() {
-
- 
 	const withAdNotoItems = [
 		{
 			title: "Keep track of every movie or series you've ever watched.",
@@ -22,7 +20,7 @@ function WithAdNoto() {
 		{
 			title: "Save review about every content you've ever watched.",
 			icon: <CommentOutlined />,
-			hoverColor:"#00c030",
+			hoverColor: "#00c030",
 		},
 
 		{
@@ -37,53 +35,48 @@ function WithAdNoto() {
 			hoverColor: "#ee7000",
 		},
 		{
- 			title: "Rate each content with a “like”.",
+			title: "Rate each content with a “like”.",
 			icon: <StarOutlined />,
 			hoverColor: "#209ce4",
-		 
 		},
 		{
 			title: "So let's start!",
 			icon: <CaretRightOutlined />,
 			hoverColor: "#209ce4",
 		},
+
+		//className={style.gridStyle} style={{ width: 100 }}
 	];
-	 const colStyle =  {
-		backgroundColor:"#456",
-		color: "#f9f9f9",
-		fontSize: "22px",
-		padding:"24px",
-		 
-	};
-	const titleStyle = {
-		color: "#f9c22e",
-		fontWeight: "500",
-		fontSize: "28px",
-	};
 
 	return (
 		<>
-			<Col span={22} offset={1} style={{ paddingTop: "50px" }}>
-				<Divider orientation="left" style={{ borderColor: '#f9c22e',  }}> 
-					<Title level={5} style={titleStyle}>
-						With adNoto 
-					</Title>
-				</Divider>
-				<Row   >
+			<Row style={{ paddingTop: "30px" }}></Row>
+			<Card title="With adNoto..." className={style.WithAdNoto}>
+				<Row gutter={[16, 16]}>
 					{withAdNotoItems.map((item, key) => (
-						<Col key={key} span={6}  offset={1} style={colStyle} >
-							<div style={{ display: "flex" }}>
-								<span style ={{fontSize: "26px"}}>{item.icon}</span>
-								<p style={{ marginBottom: "0", paddingLeft: "10px" }}>
-									{item.title}
-								</p>
-							</div>
+						<Col
+							xs={12}
+							sm={12}
+							md={12}
+							lg={8}
+							xl={8}
+							style={{
+								padding: "0px !important",
+								display: "flex",
+								justifyContent: "center",
+							}}
+						>
+							<Card.Grid key={key} className={style.gridStyle}>
+								<div style={{ display: "flex" }}>
+									{item.icon}
+									<Title level={5}>{item.title}</Title>
+								</div>
+							</Card.Grid>
 						</Col>
 					))}
 				</Row>
-			</Col>
+			</Card>
 		</>
-		
 	);
 }
 
