@@ -136,6 +136,7 @@ export const Provider = ({ children }) => {
 					avatar: user.avatar,
 				},
 			});
+			return a;
 		});
 		setComments({
 			...comments,
