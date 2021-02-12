@@ -1,8 +1,9 @@
-import { Layout, Row, Col, Card, Typography, Button, Divider } from "antd";
+import { Layout, Row, Col, Card, Typography, Button } from "antd";
 
 import style from "./style.module.css";
 import { VideoCameraFilled } from "@ant-design/icons";
-import Comments from  "./components/Comments"
+import Comments from "./components/Comments";
+import CustomDivider from "../../../../shared/components/CustomDivider";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -53,7 +54,7 @@ const ContentPage = () => {
 							<Col
 								flex={3}
 								className={style.descSection}
-								style={{ paddingTop: 40}}
+								style={{ paddingTop: 40 }}
 							>
 								<div className={style.title}>
 									<Title>{content.title}</Title>
@@ -73,12 +74,7 @@ const ContentPage = () => {
 									<Button>Season 8</Button>
 								</div>
 
-								<Divider
-									orientation="left"
-									style={{ height: "fit-content", fontWeight: "unset" }}
-								>
-									<Title level={3}>Top Comments</Title>
-								</Divider>
+								<CustomDivider title={"Top Comments"} />
 
 								<Comments />
 							</Col>

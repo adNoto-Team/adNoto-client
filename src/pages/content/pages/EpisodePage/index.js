@@ -1,9 +1,10 @@
-import { Layout, Row, Col, Card, Typography, Button, Divider } from "antd";
+import { Layout, Row, Col, Card, Typography, Button } from "antd";
 
 import { RightOutlined } from "@ant-design/icons";
 import Comments from "../ContentPage/components/Comments";
 import style from "./style.module.css";
 import EpisodeSider from "./components/EpisodeSider";
+import CustomDivider from "../../../../shared/components/CustomDivider";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -45,7 +46,7 @@ const EpisodePage = () => {
 							<Col flex={2} className={style.cardSection}>
 								<Card
 									hoverable
-									style={{ width: 240,  top: "10px" }}
+									style={{ width: 240, top: "10px" }}
 									cover={<img alt="content-cover" src={content.posterImg} />}
 								>
 									<Meta
@@ -73,25 +74,11 @@ const EpisodePage = () => {
 								<Row justify={"space-between"}>
 									<Text className={style.desc}>{content.desc}</Text>
 								</Row>
-								{/* <div className={style.seasonRow}>
-									<Button>Season 1</Button>
-									<Button>Season 2</Button>
-									<Button>Season 3</Button>
-									<Button>Season 4</Button>
-									<Button>Season 5</Button>
-									<Button>Season 6</Button>
-									<Button>Season 7</Button>
-									<Button>Season 8</Button>
-								</div> */}
 
-								<Divider
-									orientation="left"
-									style={{ height: "fit-content", fontWeight: "unset" }}
-								>
-									<Title level={3}>Top Comments</Title>
-								</Divider>
+								<CustomDivider title={"Top Comments"} />
 
 								<Comments />
+								<CustomDivider title={"All Comments"} />
 							</Col>
 						</Row>
 					</Content>
