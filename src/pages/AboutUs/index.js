@@ -1,6 +1,7 @@
-import style from "./style.module.css";
-import "./style.css";
 import { Col, Card, Typography, Row, Divider, Image } from "antd";
+
+import style from "./style.module.css";
+
 const { Title } = Typography;
 const { Meta } = Card;
 
