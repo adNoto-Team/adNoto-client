@@ -13,7 +13,7 @@ const CardItem = ({ name, imdbScore, thumbnail }) => {
 				className={style.cardItem}
 				cover={<img alt="content-cover" src={thumbnail} />}
 			>
-				<Meta title={name} description={`${ StarFilled }: ${imdbScore}`} />
+				<Meta title={name} description={<><StarFilled /> {imdbScore}</>} />
 			</Card>
 		</Col>
 	);
