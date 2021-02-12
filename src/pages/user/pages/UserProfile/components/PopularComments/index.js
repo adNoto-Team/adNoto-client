@@ -56,15 +56,17 @@ const PopulerComments = ({ author, avatarImg, commentsArray }) => {
 	return (
 		<>
 			{commentsArray &&
-				commentsArray.map((item) => (
-					<CommentItem
-						author={author}
-						avatar={avatarImg}
-						from={item.content}
-						content={item.comment.text}
-						likeCount={item.comment.liked}
-					/>
-				))}
+				commentsArray
+					.slice(0, 3)
+					.map((item) => (
+						<CommentItem
+							author={author}
+							avatar={avatarImg}
+							from={item.content}
+							content={item.comment.text}
+							likeCount={item.comment.liked}
+						/>
+					))}
 		</>
 	);
 };

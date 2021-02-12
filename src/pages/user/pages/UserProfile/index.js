@@ -64,7 +64,7 @@ const UserProfile = () => {
 
 	if (profile && profile.user) {
 		const { avatar: avatarImg, name, surname, username, desc } = profile.user;
-		const { commentNum, commentArr } = profile;
+		const { commentNum, commentArr, willWatchArr, watchingArr } = profile;
 		const fullname = `${capitalize(name)} ${capitalize(surname)}`;
 
 		return (
@@ -158,21 +158,19 @@ const UserProfile = () => {
 										author={fullname}
 										avatarImg={avatarImg}
 									/>
-
-									{/* <CommentsList /> */}
-
 									<ProfileContentRow
 										title={"Currently Watching"}
-										contents={dummyUser.currentlyWatching}
+										contents={watchingArr}
 									/>
 									<ProfileContentRow
 										title={"Will Watch"}
-										contents={dummyUser.currentlyWatching}
+										contents={willWatchArr}
 									/>
-									<ProfileContentRow
+									{/* TODO Add Watched Contents*/}
+									{/* <ProfileContentRow
 										title={"Watched"}
-										contents={dummyUser.currentlyWatching}
-									/>
+										contents={willWatchArr}
+									/> */}
 								</Col>
 							</Row>
 						</Content>
