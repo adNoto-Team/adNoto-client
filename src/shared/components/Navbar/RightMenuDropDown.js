@@ -6,11 +6,12 @@ import Context from "../../../context/Context";
 const RightMenuDropDown = () => {
 	const { setIsToken, user, getUser, profile } = useContext(Context);
 	let history = useHistory();
+
 	function handleButtonClick(e) {
 		if (profile.user) {
 			history.push("/userprofile");
 		} else {
-			message.info("Click on left button.");
+			message.error("You must login!");
 		}
 	}
 
