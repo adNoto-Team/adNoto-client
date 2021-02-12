@@ -2,7 +2,7 @@ import { Menu, Dropdown, Button, message, Space, Tooltip } from "antd";
 import { useContext } from "react";
 
 import Context from "../../../context/Context";
-const RightMenuDropDown = ({ a }) => {
+const RightMenuDropDown = () => {
 	const { setIsToken } = useContext(Context);
 
 	function handleButtonClick(e) {
