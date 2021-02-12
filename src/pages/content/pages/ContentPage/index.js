@@ -6,6 +6,8 @@ import { VideoCameraFilled } from "@ant-design/icons";
 import CustomDivider from "../../../../shared/components/CustomDivider";
 import CommentsList from "../components/Comments/CommentsList";
 import NewComment from "../components/Comments/NewComment";
+import Loading from "../../../../shared/components/Loading";
+import { useParams } from "react-router-dom";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -25,7 +27,8 @@ const content = {
 };
 
 const ContentPage = () => {
-	const curId = 1;
+	let { id: curId } = useParams();
+
 	const {
 		getContentDetails,
 		contentDetails,
@@ -33,10 +36,10 @@ const ContentPage = () => {
 		user,
 		sendCommentofContent,
 	} = useContext(Context);
+
 	useEffect(() => {
-		if (!contentDetails && !!contentDetails.name) getContentDetails(2);
-	}, [contentDetails]);
-	console.log("CONTENTDETAİLS : ", contentDetails);
+		getContentDetails(curId);
+	}, [user]);
 
 	if (contentDetails && contentDetails.name)
 		return (
@@ -104,7 +107,7 @@ const ContentPage = () => {
 									/>
 									<NewComment
 										cb={(comment, isSpoiler) => {
-											sendCommentofContent(1, comment, isSpoiler);
+											sendCommentofContent(curId, comment, isSpoiler);
 										}}
 										author={user.username}
 										avatar={website + user.avatar}
@@ -117,7 +120,7 @@ const ContentPage = () => {
 			</>
 		);
 	else {
-		return <>Loading</>;
+		return <Loading />;
 	}
 };
 

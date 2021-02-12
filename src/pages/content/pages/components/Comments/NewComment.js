@@ -39,13 +39,15 @@ const Editor = ({ onChange, onSubmit, submitting, value, onCheck }) => (
 	</>
 );
 
-const NewComment = ({ author, avatar, cb }) => {
+
+const NewComment = ({ cb, author, avatar }) => {
 	const [comments, setComments] = useState([]);
 	const [submitting, setSubmitting] = useState(false);
 	const [value, setValue] = useState("");
+	const [isSpoiler, setSpoiler] = useState(false);
 
 	const onCheck = (e) => {
-		console.log(`checked = ${e.target.checked}`);
+		setSpoiler(!isSpoiler);
 	};
 
 	const handleSubmit = () => {
@@ -58,7 +60,7 @@ const NewComment = ({ author, avatar, cb }) => {
 		setTimeout(() => {
 			setSubmitting(false);
 			setValue("");
-			cb(value, false);
+			cb(value, isSpoiler);
 		}, 1000);
 	};
 
