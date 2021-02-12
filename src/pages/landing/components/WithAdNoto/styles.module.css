@@ -1,0 +1,32 @@
+
+.gridStyle {
+  width: 100%; 
+  font-size: 22px !important;
+  text-align: left;
+}
+.gridStyle span {
+  display: flex;
+  justify-content: center;
+}
+.gridStyle span svg {
+  margin: auto !important;
+  font-size: 26px;
+}
+
+.gridStyle h5 {
+  padding-left: 10px !important;
+  margin-bottom: 0px !important;
+}
+
+@media only screen and (max-width: 480px) {
+    .gridStyle {
+      width: unset !important;
+      padding:4px !important
+    }
+    .unset {
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+    }
+     
+  }
+  

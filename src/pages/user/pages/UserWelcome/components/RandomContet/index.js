@@ -13,7 +13,7 @@ const RandomContent = () => {
 						alt=""
 					/>
 					<Button className={style.randomContetButton} size={"large"}>
-						<FireTwoTone /> Radom Content
+						<FireTwoTone /> Random Content
 					</Button>
 				</div>
 			</Row>

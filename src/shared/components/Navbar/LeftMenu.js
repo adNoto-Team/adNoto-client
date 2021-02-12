@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
+
 import { Menu, Grid } from "antd";
 import photo from "../../../assets/images/adnoto.png";
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
 const { useBreakpoint } = Grid;
 
 const LeftMenu = () => {
+
 	const { md } = useBreakpoint();
 	return (
+
 		<Menu mode={md ? "horizontal" : "inline"}>
 			<Menu.Item key="mail">
 				<Link to="/aboutUs">About Us</Link>
@@ -28,6 +32,7 @@ const LeftMenu = () => {
 			</Menu.Item>
 		</Menu>
 	);
-};
+}
 
 export default LeftMenu;
+

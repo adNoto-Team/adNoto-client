@@ -1,0 +1,10 @@
+.bottomBar{
+    background-color: rgb(207, 207, 207);
+    display: flex;
+    justify-content: center;
+    height: 58px;
+    padding: 20px 20px;
+    color: gray;
+     overflow: auto;
+ 
+}

@@ -5,8 +5,10 @@ import LeftMenu from "./LeftMenu";
 import RightMenu from "./RightMenu";
 import { Drawer, Button, Col } from "antd";
 import style from "./style.module.css";
+ 
 import logo from "../../../assets/images/adNoto-logo.png";
 import Context from "../../../context/Context";
+ 
 
 const Navbar = () => {
 	const { getUser } = useContext(Context);
@@ -31,6 +33,7 @@ const Navbar = () => {
 						<img src={logo}></img>
 						adNoto
 					</Link>
+ 
 				</div>
 				<div className={style.menuCon}>
 					<div className={style.leftMenu}>
@@ -62,4 +65,5 @@ const Navbar = () => {
 	);
 };
 
-export default Navbar;
+  export default Navbar;
+ 
