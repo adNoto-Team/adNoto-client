@@ -1,6 +1,6 @@
 import { Layout, Row, Col, Card, Typography, Button } from "antd";
 
-import { RightOutlined } from "@ant-design/icons";
+import { RightOutlined, VideoCameraFilled } from "@ant-design/icons";
 import EpisodeSider from "./components/EpisodeSider";
 import CustomDivider from "../../../../shared/components/CustomDivider";
 import CommentsList from "../components/Comments/CommentsList";
@@ -78,6 +78,9 @@ const EpisodePage = () => {
 										description={content.episodeName}
 									/>
 								</Card>
+								<Button className={style.watchTrailerButton} size={"large"}>
+									<VideoCameraFilled /> Watch Trailer
+								</Button>
 								<Button
 									className={style.desktopNextEpisodeButton}
 									size={"large"}

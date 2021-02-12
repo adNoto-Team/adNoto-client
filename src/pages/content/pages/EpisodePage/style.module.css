@@ -32,13 +32,6 @@
 .descSection {
   padding-left: 33%;
 }
-.coverImg {
-  height: 235px;
-  width: 100%;
-  object-fit: cover;
-  object-position: 50% 61%;
-  padding-top: 30px;
-}
 
 .cardSection {
   position: fixed;
@@ -67,14 +60,6 @@
   color: #faad14;
 }
 
-.seasonRow {
-  padding: 20px 0 20px 0;
-  width: 100%;
-  max-width: 600px;
-}
-.seasonRow Button {
-  margin: 0 5px 5px 0;
-}
 
 @media only screen and (max-width: 480px) {
   .descSection {
@@ -88,11 +73,6 @@
     align-items: center;
     padding-bottom: 29px;
     position: unset;
-  }
-
-  .coverImg {
-    filter: blur(4px);
-    padding-top: unset;
   }
 
   .nextEpisodeButtonWrapper {
