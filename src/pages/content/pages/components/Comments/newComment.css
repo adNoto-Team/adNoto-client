@@ -1,0 +1,9 @@
+.isSpoilerCheckBox {
+  padding-left: 17px;
+}
+
+@media only screen and (max-width: 768px) {
+  .ant-comment {
+    width: 95%;
+  }
+}

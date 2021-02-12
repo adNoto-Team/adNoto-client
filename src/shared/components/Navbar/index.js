@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import LeftMenu from "./LeftMenu";
@@ -6,8 +6,13 @@ import RightMenu from "./RightMenu";
 import { Drawer, Button, Col } from "antd";
 import style from "./style.module.css";
 import logo from "../../../assets/images/adNoto-logo.png";
+import Context from "../../../context/Context";
 
 const Navbar = () => {
+	const { getUser } = useContext(Context);
+	useEffect(() => {
+		getUser();
+	}, []);
 	const [isVisible, setIsVisiblee] = useState("");
 
 	const showDrawer = () => {

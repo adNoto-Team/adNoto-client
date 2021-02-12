@@ -4,7 +4,7 @@ import CustomDivider from '../../../../../../shared/components/CustomDivider/ind
 import CardItem from "./CardItem";
 import style from "./style.module.css";
 
-const ContentRow = ({ title, contents }) => {
+const ProfileContentRow = ({ title, contents }) => {
 	return (
 		<>
 			<Row style={{ paddingTop: 30 }} justify={"center"}>
@@ -24,4 +24,4 @@ const ContentRow = ({ title, contents }) => {
 	);
 };
 
-export default ContentRow;
+export default ProfileContentRow;

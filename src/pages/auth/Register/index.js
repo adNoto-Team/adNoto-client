@@ -18,11 +18,12 @@ import { useContext, useEffect, useState } from "react";
 import Context from "../../../context/Context";
 
 import styles from "./style.module.css";
+import { useHistory } from "react-router-dom";
 
 const { Title } = Typography;
 
 const SignUp = () => {
-	const { signup, dbMessage, token, isToken } = useContext(Context);
+	const { signup, dbMessage, isToken, token } = useContext(Context);
 	const [isOnFinish, setIsOnFinish] = useState(false);
 
 	const onFinish = (values) => {

@@ -1,0 +1,35 @@
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.site-layout-sub-header-background {
+  background: #fff;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+
+.episodeSiderWrapper {
+  position: absolute;
+  padding-top: 7px;
+}
+
+.episodeSider {
+  position: fixed;
+  height: 100%;
+  z-index: 5;
+  width: 200px;
+  /* flex: 0 0 200px;
+  max-width: 200px;
+  min-width: 200px; */
+  /* margin-top: 3%; */
+}
+
+.style_menuBar__14l4e {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
