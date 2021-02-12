@@ -2,8 +2,9 @@ import { Layout, Row, Col, Card, Typography, Button } from "antd";
 
 import style from "./style.module.css";
 import { VideoCameraFilled } from "@ant-design/icons";
-import Comments from "./components/Comments";
 import CustomDivider from "../../../../shared/components/CustomDivider";
+import CommentsList from "../components/Comments/CommentsList";
+import NewComment from "../components/Comments/NewComment";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -20,6 +21,12 @@ const content = {
 		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1",
 	coverImg:
 		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjessicajjohnston.com%2Fblog%2Fwp-content%2Fuploads%2F2014%2F04%2Fthe-office-netflix-tv-series.jpg&f=1&nofb=1",
+};
+
+const currentUser = {
+	username: "Hasan Tezcan",
+	avatar:
+		"https://avatars.githubusercontent.com/u/32804505?s=460&u=e04a6baec805cecc5ed8df4d387b77a93c164dd7&v=4",
 };
 
 const ContentPage = () => {
@@ -76,7 +83,11 @@ const ContentPage = () => {
 
 								<CustomDivider title={"Top Comments"} />
 
-								<Comments />
+								<CommentsList />
+								<NewComment
+									author={currentUser.username}
+									avatar={currentUser.avatar}
+								/>
 							</Col>
 						</Row>
 					</Content>

@@ -1,10 +1,13 @@
 import { Layout, Row, Col, Card, Typography, Button } from "antd";
 
 import { RightOutlined } from "@ant-design/icons";
-import Comments from "../ContentPage/components/Comments";
-import style from "./style.module.css";
 import EpisodeSider from "./components/EpisodeSider";
 import CustomDivider from "../../../../shared/components/CustomDivider";
+import CommentsList from "../components/Comments/CommentsList";
+import CommentItem from "../components/Comments/CommentItem";
+import NewComment from "../components/Comments/NewComment";
+
+import style from "./style.module.css";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -21,6 +24,27 @@ const content = {
 		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1",
 	coverImg:
 		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjessicajjohnston.com%2Fblog%2Fwp-content%2Fuploads%2F2014%2F04%2Fthe-office-netflix-tv-series.jpg&f=1&nofb=1",
+};
+
+const popularComment = {
+	author: "Hasan Tezcan",
+	avatar:
+		"https://avatars.githubusercontent.com/u/32804505?s=460&u=e04a6baec805cecc5ed8df4d387b77a93c164dd7&v=4",
+	content: (
+		<p>
+			We supply a series of design principles, practical patterns and high
+			quality design resources (Sketch and Axure), to help people create their
+			product prototypes beautifully and efficiently.
+		</p>
+	),
+	datetime: "2021-02-12 01:44",
+	likeCount: 5,
+	isSpoiler: false,
+};
+const currentUser = {
+	username: "Hasan Tezcan",
+	avatar:
+		"https://avatars.githubusercontent.com/u/32804505?s=460&u=e04a6baec805cecc5ed8df4d387b77a93c164dd7&v=4",
 };
 
 const EpisodePage = () => {
@@ -75,10 +99,21 @@ const EpisodePage = () => {
 									<Text className={style.desc}>{content.desc}</Text>
 								</Row>
 
+								{/* Comments */}
+								<NewComment
+									author={currentUser.username}
+									avatar={currentUser.avatar}
+								/>
 								<CustomDivider title={"Top Comments"} />
-
-								<Comments />
+								<CommentItem
+									author={popularComment.author}
+									avatar={popularComment.avatar}
+									content={popularComment.content}
+									likeCount={popularComment.likeCount}
+									isSpoiler={popularComment.isSpoiler}
+								/>
 								<CustomDivider title={"All Comments"} />
+								<CommentsList />
 							</Col>
 						</Row>
 					</Content>

@@ -1,22 +1,25 @@
 import { useState } from "react";
-import { Comment, Avatar, Form, Button, List, Input } from "antd";
+
+import { Comment, Avatar, Form, Button, List, Input, Checkbox } from "antd";
 import moment from "moment";
 
 import "./newComment.css";
 
 const { TextArea } = Input;
 
-{/* TODO FIX replay number */}
+{
+	/* TODO FIX replay number */
+}
 const CommentList = ({ comments }) => (
 	<List
 		dataSource={comments}
-		// header={`${comments.length} ${comments.length > 1 ? "replies" : "reply"}`}
+		header={`${comments.length} ${comments.length > 1 ? "comments" : "comment"}`}
 		itemLayout="horizontal"
 		renderItem={(props) => <Comment {...props} />}
 	/>
 );
 
-const Editor = ({ onChange, onSubmit, submitting, value }) => (
+const Editor = ({ onChange, onSubmit, submitting, value, onCheck }) => (
 	<>
 		<Form.Item>
 			<TextArea rows={4} onChange={onChange} value={value} />
@@ -30,14 +33,22 @@ const Editor = ({ onChange, onSubmit, submitting, value }) => (
 			>
 				Add Comment
 			</Button>
+			<Checkbox className="isSpoilerCheckBox" onChange={onCheck}>
+				Contains spoiler
+			</Checkbox>
 		</Form.Item>
 	</>
 );
 
-const NewComment = () => {
+const NewComment = ({ author, avatar }) => {
+	console.log("NEW DATA, AUTHOR and AVATAR", author, avatar);
 	const [comments, setComments] = useState([]);
 	const [submitting, setSubmitting] = useState(false);
 	const [value, setValue] = useState("");
+
+	const onCheck = (e) => {
+		console.log(`checked = ${e.target.checked}`);
+	};
 
 	const handleSubmit = () => {
 		if (!value) {
@@ -50,11 +61,10 @@ const NewComment = () => {
 			setSubmitting(false);
 			setValue("");
 			setComments([
-				comments,
+				...comments,
 				{
-					author: "Han Solo",
-					avatar:
-						"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png",
+					author: author,
+					avatar: avatar,
 					content: <p>{value}</p>,
 					datetime: moment().fromNow(),
 				},
@@ -67,25 +77,21 @@ const NewComment = () => {
 	};
 
 	return (
-		<>
+		<div className="newCommentWrapper">
 			{comments.length > 0 && <CommentList comments={comments} />}
 			<Comment
-				avatar={
-					<Avatar
-						src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
-						alt="Han Solo"
-					/>
-				}
+				avatar={avatar}
 				content={
 					<Editor
 						onChange={handleChange}
 						onSubmit={handleSubmit}
 						submitting={submitting}
+						onCheck={onCheck}
 						value={value}
 					/>
 				}
 			/>
-		</>
+		</div>
 	);
 };
 

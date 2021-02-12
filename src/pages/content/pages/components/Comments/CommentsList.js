@@ -1,6 +1,4 @@
 import CommentItem from "./CommentItem";
-import NewComment from "./NewComment";
-
 import { List } from "antd";
 
 const data = [
@@ -141,11 +139,11 @@ const data = [
 	},
 ];
 
-const commentItem = () => {
+const CommentsList = () => {
 	return (
 		<>
 			<List
-				// header={`${data.length} replies`}
+				// header={`total comment: ${data.length} `}
 				itemLayout="horizontal"
 				dataSource={data}
 				renderItem={(item) => (
@@ -161,10 +159,8 @@ const commentItem = () => {
 					</li>
 				)}
 			/>
-
-			<NewComment />
 		</>
 	);
 };
 
-export default commentItem;
+export default CommentsList;
