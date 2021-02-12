@@ -19,7 +19,7 @@ const App = () => {
 			<Provider>
 				<Router>
 					<Navbar />
-					<div>
+					<div style={{paddingTop: "50px"}}>
 						<div className="content">
 							<Switch>
 								<Route path="/" exact component={UserWelcome} />

@@ -3,6 +3,7 @@ import { Layout, Row, Col, Card, Typography, Button, Divider } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import Comments from "../ContentPage/components/Comments";
 import style from "./style.module.css";
+import EpisodeSider from "./components/EpisodeSider";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -35,15 +36,16 @@ const EpisodePage = () => {
 					<Text> Next Episode</Text>
 				</div>
 			</div>
-			<Col lg={{ span: 12, offset: 6 }} style={{ paddingTop: "40px" }}>
-				<Layout>
+			<Layout>
+				<EpisodeSider />
+				<Col lg={{ span: 12, offset: 6 }} style={{ paddingTop: "50px" }}>
 					<Content>
 						<Row>
 							{/* Card Section */}
 							<Col flex={2} className={style.cardSection}>
 								<Card
 									hoverable
-									style={{ width: 240 }}
+									style={{ width: 240,  top: "10px" }}
 									cover={<img alt="content-cover" src={content.posterImg} />}
 								>
 									<Meta
@@ -51,7 +53,10 @@ const EpisodePage = () => {
 										description={content.episodeName}
 									/>
 								</Card>
-								<Button className={style.desktopNextEpisodeButton} size={"large"}>
+								<Button
+									className={style.desktopNextEpisodeButton}
+									size={"large"}
+								>
 									<RightOutlined /> Next Episode
 								</Button>
 							</Col>
@@ -90,8 +95,8 @@ const EpisodePage = () => {
 							</Col>
 						</Row>
 					</Content>
-				</Layout>
-			</Col>
+				</Col>
+			</Layout>
 		</>
 	);
 };

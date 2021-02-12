@@ -79,7 +79,7 @@
 @media only screen and (max-width: 480px) {
   .descSection {
     padding-left: 11px;
-    top: -57px;
+    top: -20px;
   }
   .cardSection {
     flex-direction: column;
