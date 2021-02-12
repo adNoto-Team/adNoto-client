@@ -77,7 +77,7 @@ const UserWelcome = () => {
 	return (
 		<>
 			<Col lg={{ span: 12, offset: 6 }}>
-				<Layout span={12} offset={6}>
+				<Layout span={12} offset={6} style={{ backgroundColor: "#EBF2F9" }}>
 					<Content>
 						{/* Last comented content section */}
 						<ContentBilbord
