@@ -66,7 +66,7 @@ export const Provider = ({ children }) => {
 		});
 		setProfile(data);
 		setUser(data.user);
-		console.log(data);
+		console.log("CONTEX DATA", data);
 	};
 
 	const getRandomContent = async () => {
