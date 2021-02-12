@@ -18,17 +18,18 @@ const data = [
 				to help people create their product prototypes beautifully and
 				efficiently.We supply a series of design principles, practical patterns
 				and high quality design resources (Sketch and Axure), to help people
-				create their product prototypes beautifully and efficiently.We supply a series of design principles, practical patterns and high
+				create their product prototypes beautifully and efficiently.We supply a
+				series of design principles, practical patterns and high quality design
+				resources (Sketch and Axure), to help people create their product
+				prototypes beautifully and efficiently.We supply a series of design
+				principles, practical patterns and high quality design resources (Sketch
+				and Axure), to help people create their product prototypes beautifully
+				and efficiently.We supply a series of design principles, practical
+				patterns and high quality design resources (Sketch and Axure), to help
+				people create their product prototypes beautifully and efficiently.We
+				supply a series of design principles, practical patterns and high
 				quality design resources (Sketch and Axure), to help people create their
-				product prototypes beautifully and efficiently.We supply a series of
-				design principles, practical patterns and high quality design resources
-				(Sketch and Axure), to help people create their product prototypes
-				beautifully and efficiently.We supply a series of design principles,
-				practical patterns and high quality design resources (Sketch and Axure),
-				to help people create their product prototypes beautifully and
-				efficiently.We supply a series of design principles, practical patterns
-				and high quality design resources (Sketch and Axure), to help people
-				create their product prototypes beautifully and efficiently.
+				product prototypes beautifully and efficiently.
 			</p>
 		),
 		datetime: "2021-02-12 01:44",
@@ -67,7 +68,7 @@ const data = [
 	},
 ];
 
-const CommentsList = () => {
+const CommentsList = ({ web, data, isWatched }) => {
 	return (
 		<>
 			<List
@@ -77,12 +78,12 @@ const CommentsList = () => {
 				renderItem={(item) => (
 					<li>
 						<CommentItem
-							author={item.author}
-							avatar={item.avatar}
-							datetime={item.datetime}
-							content={item.content}
-							likeCount={item.likeCount}
-							isSpoiler={item.isSpoiler}
+							author={item.user.username}
+							avatar={item.user.avatar === null ? "" : web + item.user.avatar}
+							datetime={item.comment.createdAt}
+							content={item.comment.text}
+							likeCount={0} // CHANGE HERE
+							isSpoiler={isWatched ? false : item.isSpoiler}
 						/>
 					</li>
 				)}

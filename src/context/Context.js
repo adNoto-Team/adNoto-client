@@ -13,9 +13,10 @@ export const Provider = ({ children }) => {
 	const [profile, setProfile] = useState({});
 	const [feed, setFeed] = useState([]);
 	const [contentDetails, setContentDetails] = useState({});
-
 	const [randomContent, setRandomContent] = useState({});
 
+	const [comments, setComments] = useState([]);
+	const website = "https://api.adnoto.co/";
 	useEffect(() => {
 		setMovieData([]);
 	}, []);
@@ -96,6 +97,61 @@ export const Provider = ({ children }) => {
 		setContentDetails(data);
 	};
 
+	const getCommentsofEpisode = async (id) => {
+		const { data } = await db.get(`/comment/episode/${id}`, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		setComments(data);
+	};
+	const getCommentsofContent = async (id) => {
+		const { data } = await db.get(`/comment/content/${id}`, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		setComments(data);
+	};
+
+	const sendCommentofContent = async (id, text, isSpoiler) => {
+		const { data } = await db.post(
+			`/comment/content/${id}`,
+			{ text, isSpoiler },
+			{
+				headers: {
+					Authorization: "Bearer " + token,
+					"Content-Type": "application/json",
+				},
+			}
+		);
+		setContentDetails((a) => {
+			a.commentsArr.push({
+				comment: data,
+				like: 0,
+				user: {
+					username: user.username,
+					avatar: user.avatar,
+				},
+			});
+		});
+		setComments({
+			...comments,
+			result: [
+				{
+					comment: data,
+					like: 0,
+					user: {
+						username: user.username,
+						avatar: user.avatar,
+					},
+				},
+			],
+		});
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
 			setIsToken(true);
@@ -104,6 +160,7 @@ export const Provider = ({ children }) => {
 	}, [token]);
 
 	const values = {
+		website,
 		signup,
 		login,
 		dbMessage,
@@ -121,6 +178,10 @@ export const Provider = ({ children }) => {
 		contentDetails,
 		getContentDetails,
 		profile,
+		getCommentsofContent,
+		getCommentsofEpisode,
+		comments,
+		sendCommentofContent,
 	};
 
 	return (

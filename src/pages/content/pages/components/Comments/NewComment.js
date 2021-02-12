@@ -10,7 +10,9 @@ const { TextArea } = Input;
 const CommentList = ({ comments }) => (
 	<List
 		dataSource={comments}
-		header={`${comments.length} ${comments.length > 1 ? "comments" : "comment"}`}
+		header={`${comments.length} ${
+			comments.length > 1 ? "comments" : "comment"
+		}`}
 		itemLayout="horizontal"
 		renderItem={(props) => <Comment {...props} />}
 	/>
@@ -56,15 +58,7 @@ const NewComment = ({ author, avatar }) => {
 		setTimeout(() => {
 			setSubmitting(false);
 			setValue("");
-			setComments([
-				...comments,
-				{
-					author: author,
-					avatar: avatar,
-					content: <p>{value}</p>,
-					datetime: moment().fromNow(),
-				},
-			]);
+			cb(value, false);
 		}, 1000);
 	};
 

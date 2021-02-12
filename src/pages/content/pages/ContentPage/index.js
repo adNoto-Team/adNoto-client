@@ -1,5 +1,6 @@
 import { Layout, Row, Col, Card, Typography, Button } from "antd";
-
+import { useContext, useEffect, useState } from "react";
+import Context from "../../../../context/Context";
 import style from "./style.module.css";
 import { VideoCameraFilled } from "@ant-design/icons";
 import CustomDivider from "../../../../shared/components/CustomDivider";
@@ -11,7 +12,7 @@ const { Meta } = Card;
 const { Title, Text } = Typography;
 
 const content = {
-	title: "The Office",
+	title: "The Offfice",
 	episodeName: "Season 3 Episode 5",
 	imdb: "8.5",
 	desc:
@@ -23,78 +24,101 @@ const content = {
 		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjessicajjohnston.com%2Fblog%2Fwp-content%2Fuploads%2F2014%2F04%2Fthe-office-netflix-tv-series.jpg&f=1&nofb=1",
 };
 
-const currentUser = {
-	username: "Hasan Tezcan",
-	avatar:
-		"https://avatars.githubusercontent.com/u/32804505?s=460&u=e04a6baec805cecc5ed8df4d387b77a93c164dd7&v=4",
-};
-
 const ContentPage = () => {
-	return (
-		<>
-			<Col lg={{ span: 16, offset: 4 }}>
-				<div span={12} offset={6}>
-					<img className={style.coverImg} src={content.coverImg} alt="" />
-				</div>
-			</Col>
-			<Col lg={{ span: 12, offset: 6 }}>
-				<Layout>
-					<Content>
-						<Row>
-							{/* Card Section */}
-							<Col flex={2} className={style.contentCover}>
-								<Card
-									hoverable
-									style={{ width: 240 }}
-									cover={<img alt="content-cover" src={content.posterImg} />}
+	const curId = 1;
+	const {
+		getContentDetails,
+		contentDetails,
+		website,
+		user,
+		sendCommentofContent,
+	} = useContext(Context);
+	useEffect(() => {
+		if (!contentDetails && !!contentDetails.name) getContentDetails(2);
+	}, [contentDetails]);
+	console.log("CONTENTDETAİLS : ", contentDetails);
+
+	if (contentDetails && contentDetails.name)
+		return (
+			<>
+				<Col lg={{ span: 16, offset: 4 }}>
+					<div span={12} offset={6}>
+						<img
+							className={style.coverImg}
+							src={website + contentDetails.coverPicture}
+							alt="CoverPicture"
+						/>
+					</div>
+				</Col>
+				<Col lg={{ span: 12, offset: 6 }}>
+					<Layout>
+						<Content>
+							<Row>
+								{/* Card Section */}
+								<Col flex={2} className={style.contentCover}>
+									<Card
+										hoverable
+										style={{ width: 240 }}
+										cover={
+											<img
+												alt="Avatar Picture"
+												src={website + contentDetails.avatar}
+											/>
+										}
+									>
+										<Meta
+											title={contentDetails.name}
+											description={contentDetails.director}
+										/>
+									</Card>
+									<Button className={style.watchTrailerButton} size={"large"}>
+										<VideoCameraFilled /> Watch Trailer
+									</Button>
+								</Col>
+								{/* Desc Section */}
+								<Col
+									flex={3}
+									className={style.descSection}
+									style={{ paddingTop: 40 }}
 								>
-									<Meta
-										title={content.title}
-										description={content.episodeName}
+									<div className={style.title}>
+										<Title>{content.title}</Title>
+										<Text className={style.creator}>
+											{contentDetails.director}
+										</Text>
+									</div>
+									<Row justify={"space-between"}>
+										<Text className={style.desc}>{contentDetails.desc}</Text>
+									</Row>
+									<div className={style.seasonRow}>
+										{contentDetails.seasons.map((a, i) => (
+											<Button>Season {a.seasonNumber} </Button>
+										))}
+									</div>
+
+									<CustomDivider title={"Top Comments"} />
+
+									<CommentsList
+										web={website}
+										data={contentDetails.commentsArr}
 									/>
-								</Card>
-								<Button className={style.watchTrailerButton} size={"large"}>
-									<VideoCameraFilled /> Watch Trailer
-								</Button>
-							</Col>
-							{/* Desc Section */}
-							<Col
-								flex={3}
-								className={style.descSection}
-								style={{ paddingTop: 40 }}
-							>
-								<div className={style.title}>
-									<Title>{content.title}</Title>
-									<Text className={style.creator}>{content.creator}</Text>
-								</div>
-								<Row justify={"space-between"}>
-									<Text className={style.desc}>{content.desc}</Text>
-								</Row>
-								<div className={style.seasonRow}>
-									<Button>Season 1</Button>
-									<Button>Season 2</Button>
-									<Button>Season 3</Button>
-									<Button>Season 4</Button>
-									<Button>Season 5</Button>
-									<Button>Season 6</Button>
-									<Button>Season 7</Button>
-									<Button>Season 8</Button>
-								</div>
-
-								<CustomDivider title={"Top Comments"} />
-
-								<CommentsList />
-								<NewComment
-									author={currentUser.username}
-									avatar={currentUser.avatar}
-								/>
-							</Col>
-						</Row>
-					</Content>
-				</Layout>
-			</Col>
-		</>
-	);
+									<NewComment
+										cb={(comment, isSpoiler) => {
+											sendCommentofContent(1, comment, isSpoiler);
+										}}
+										author={user.username}
+										avatar={website + user.avatar}
+									/>
+								</Col>
+							</Row>
+						</Content>
+					</Layout>
+				</Col>
+			</>
+		);
+	else {
+		return <>Loading</>;
+	}
 };
 
 export default ContentPage;
