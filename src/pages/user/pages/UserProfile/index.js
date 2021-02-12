@@ -8,6 +8,8 @@ import ProfileContentRow from "./components/ProfileContentRow/index";
 
 import style from "./style.module.css";
 import "./style.css";
+import { useContext, useEffect } from "react";
+import Context from "../../../../context/Context";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -68,11 +70,28 @@ const {
 const totalCommentDesc = `Total Comments: ${totalComments}`;
 
 const UserProfile = () => {
+	const { profile, getUser } = useContext(Context);
+	//Profile has all the data you need
+
+	useEffect(() => {
+		if (!profile.user) {
+			getUser();
+		}
+	}, [profile]);
+	console.log(profile);
 	return (
 		<>
 			<Col lg={{ span: 16, offset: 4 }}>
 				<div span={12} offset={6}>
-					<img className={style.coverImg} src={content.coverImg} alt="" />
+					<img
+						className={style.coverImg}
+						src={
+							profile.user
+								? "https://api.adnoto.co/" + profile.user.avatar
+								: avatar
+						}
+						alt="aaa"
+					/>
 				</div>
 			</Col>
 			<Col lg={{ span: 12, offset: 6 }}>
@@ -84,9 +103,25 @@ const UserProfile = () => {
 								<Card
 									hoverable
 									style={{ width: 240 }}
-									cover={<img alt="content-cover" src={currentUser.avatar} />}
+									cover={
+										<img
+											alt="content-cover"
+											src={
+												profile.user
+													? "https://api.adnoto.co/" + profile.user.avatar
+													: avatar
+											}
+										/>
+									}
 								>
-									<Meta title={fullname} description={totalCommentDesc} />
+									<Meta
+										title={
+											profile.user
+												? profile.user.name + " " + profile.user.surname
+												: fullname
+										}
+										description={`Total Comments: ${profile.commentNum}`}
+									/>
 								</Card>
 								<div className={style.socialMedia}>
 									{twitter && (
@@ -110,16 +145,22 @@ const UserProfile = () => {
 								style={{ paddingTop: 40 }}
 							>
 								<div className={style.title}>
-									<Title>{fullname}</Title>
-									<Text className={style.creator}>@{username}</Text>
+									<Title>
+										{profile.user.name + " "}
+										{profile.user.surname}
+									</Title>
+									<Text className={style.creator}>
+										@{profile.user.username}
+									</Text>
 								</div>
 								<Row justify={"space-between"}>
-									<Text className={style.desc}>{content.desc}</Text>
+									<Text className={style.desc}>{profile.user.desc}</Text>
 								</Row>
 								<CustomDivider title={"Popular Comments"} />
 								<CommentsList />
 
 								<ProfileContentRow
+									data={profile.willwatch}
 									title={"Currently Watching"}
 									contents={currentlyWatching}
 								/>

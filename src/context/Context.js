@@ -10,6 +10,7 @@ export const Provider = ({ children }) => {
 	const [token, setToken] = useState("");
 	const [isToken, setIsToken] = useState(false);
 	const [user, setUser] = useState({});
+	const [profile, setProfile] = useState({});
 	const [feed, setFeed] = useState([]);
 	const [contentDetails, setContentDetails] = useState({});
 
@@ -62,6 +63,7 @@ export const Provider = ({ children }) => {
 				"Content-Type": "application/json",
 			},
 		});
+		setProfile(data);
 		setUser(data.user);
 		console.log(data);
 	};
@@ -118,6 +120,7 @@ export const Provider = ({ children }) => {
 		feed,
 		contentDetails,
 		getContentDetails,
+		profile,
 	};
 
 	return (

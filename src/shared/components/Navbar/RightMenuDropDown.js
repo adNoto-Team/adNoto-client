@@ -1,12 +1,17 @@
 import { Menu, Dropdown, Button, message, Space, Tooltip } from "antd";
 import { useContext, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import Context from "../../../context/Context";
 const RightMenuDropDown = ({ a }) => {
-	const { setIsToken, user, getUser } = useContext(Context);
+	const { setIsToken, user, getUser, profile } = useContext(Context);
+	let history = useHistory();
 	function handleButtonClick(e) {
-		message.info("Click on left button.");
-		console.log("click left button", e);
+		if (profile.user) {
+			history.push("/userprofile");
+		} else {
+			message.info("Click on left button.");
+		}
 	}
 
 	function handleMenuClick(e) {
