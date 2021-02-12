@@ -1,4 +1,5 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
+
 import {
 	CommentOutlined,
 	SaveOutlined,
@@ -7,7 +8,8 @@ import {
 	StarOutlined,
 	CaretRightOutlined,
 } from "@ant-design/icons";
-import { Row, Col, Divider, Typography, Card } from "antd";
+
+import { Row, Col, Typography, Card } from "antd";
 import style from "./styles.module.css";
 const { Title } = Typography;
 function WithAdNoto() {
@@ -15,37 +17,27 @@ function WithAdNoto() {
 		{
 			title: "Keep track of every movie or series you've ever watched.",
 			icon: <SaveOutlined />,
-			hoverColor: "#00c030",
 		},
 		{
 			title: "Save review about every content you've ever watched.",
 			icon: <CommentOutlined />,
-			hoverColor: "#00c030",
 		},
-
 		{
 			title: "Check out the content we recommend to you.",
 			icon: <SearchOutlined />,
-			hoverColor: "#ee7000",
 		},
-
 		{
 			title: "Make “Watch Later” list.",
 			icon: <UnorderedListOutlined />,
-			hoverColor: "#ee7000",
 		},
 		{
 			title: "Rate each content with a “like”.",
 			icon: <StarOutlined />,
-			hoverColor: "#209ce4",
 		},
 		{
 			title: "So let's start!",
 			icon: <CaretRightOutlined />,
-			hoverColor: "#209ce4",
 		},
-
-		//className={style.gridStyle} style={{ width: 100 }}
 	];
 
 	return (
@@ -81,5 +73,3 @@ function WithAdNoto() {
 }
 
 export default memo(WithAdNoto);
-
-//#456

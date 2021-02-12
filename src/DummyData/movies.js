@@ -1,4 +1,3 @@
-import React from  "react"
 const Data = [
     {
         name: "The Movie (2020)",

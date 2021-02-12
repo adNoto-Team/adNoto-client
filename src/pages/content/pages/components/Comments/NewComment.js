@@ -39,7 +39,7 @@ const Editor = ({ onChange, onSubmit, submitting, value, onCheck }) => (
 	</>
 );
 
-const NewComment = ({ author, avatar }) => {
+const NewComment = ({ author, avatar, cb }) => {
 	const [comments, setComments] = useState([]);
 	const [submitting, setSubmitting] = useState(false);
 	const [value, setValue] = useState("");

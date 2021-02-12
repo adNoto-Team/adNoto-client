@@ -1,6 +1,5 @@
-
 .gridStyle {
-  width: 100%; 
+  width: 100%;
   font-size: 22px !important;
   text-align: left;
 }
@@ -19,14 +18,12 @@
 }
 
 @media only screen and (max-width: 480px) {
-    .gridStyle {
-      width: unset !important;
-      padding:4px !important
-    }
-    .unset {
-      padding-left: 4px !important;
-      padding-right: 4px !important;
-    }
-     
+  .gridStyle {
+    width: unset !important;
+    padding: 4px !important;
   }
-  
+  .unset {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+}
