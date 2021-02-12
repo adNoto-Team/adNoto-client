@@ -6,6 +6,15 @@
   background: transparent !important;
 }
 
+.Card div.ant-card-body > div > div > div {
+  display: flex;
+  justify-content: center;
+}
+
+.Card div.ant-card-body > div > div > div > h4 {
+  padding: 24px 0 !important;
+}
+
 @media only screen and (max-width: 480px) {
   .memberCol {
     display: flex !important;
