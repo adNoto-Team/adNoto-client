@@ -38,7 +38,6 @@ const Editor = ({ onChange, onSubmit, submitting, value, onCheck }) => (
 );
 
 const NewComment = ({ author, avatar }) => {
-	console.log("NEW DATA, AUTHOR and AVATAR", author, avatar);
 	const [comments, setComments] = useState([]);
 	const [submitting, setSubmitting] = useState(false);
 	const [value, setValue] = useState("");

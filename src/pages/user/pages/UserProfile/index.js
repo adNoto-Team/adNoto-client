@@ -3,38 +3,29 @@ import { Layout, Row, Col, Card, Typography, Button } from "antd";
 import { InstagramOutlined, TwitterOutlined } from "@ant-design/icons";
 
 import CustomDivider from "../../../../shared/components/CustomDivider/index";
-import CommentsList from "../../../content/pages/components/Comments/CommentsList";
 import ProfileContentRow from "./components/ProfileContentRow/index";
 
 import style from "./style.module.css";
 import "./style.css";
 import { useContext, useEffect } from "react";
 import Context from "../../../../context/Context";
+import PopulerComments from "./components/PopularComments";
+import Loading from "../../../../shared/components/Loading/index";
 
 const { Content } = Layout;
 const { Meta } = Card;
 const { Title, Text } = Typography;
 
-const content = {
-	title: "The Office",
-	episodeName: "Season 3 Episode 5",
-	imdb: "8.5",
-	desc:
-		"A mockumentary on a group of typical office workers, where the workday consists of ego clashes, inappropriate behavior, and tedium.",
-	creator: "Ricky Gervais",
-	posterImg:
-		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Floftcinema.org%2Ffiles%2F2017%2F08%2F740full-the-office-us-poster.jpg&f=1&nofb=1",
-	coverImg:
-		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjessicajjohnston.com%2Fblog%2Fwp-content%2Fuploads%2F2014%2F04%2Fthe-office-netflix-tv-series.jpg&f=1&nofb=1",
-};
-
-const currentUser = {
-	username: "hasantezcan",
-	fullname: "Hasan Tezcan",
+const dummyUser = {
+	username: "username",
+	fullname: "Name Surname",
 	twitter: "https://twitter.com/hasantezcann",
-	totalComments: 55,
-	avatar:
-		"https://avatars.githubusercontent.com/u/32804505?s=460&u=e04a6baec805cecc5ed8df4d387b77a93c164dd7&v=4",
+	totalComments: 0,
+	desc:
+		"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, quas quisquam sapiente maxime at in magnam accusantium officiis fugit ad cumque nemo vero fugiat soluta est nobis? Eaque, rem pariatur!",
+	avatarImg: "https://supercharge.info/images/avatar-placeholder.png",
+	backgroundImage:
+		"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fjessicajjohnston.com%2Fblog%2Fwp-content%2Fuploads%2F2014%2F04%2Fthe-office-netflix-tv-series.jpg&f=1&nofb=1",
 	currentlyWatching: [
 		{
 			title: "The Office",
@@ -57,126 +48,140 @@ const currentUser = {
 	],
 };
 
-const {
-	fullname,
-	username,
-	avatar,
-	totalComments,
-	currentlyWatching,
-	twitter,
-	instagram,
-} = currentUser;
-
-const totalCommentDesc = `Total Comments: ${totalComments}`;
+const capitalize = (s) => {
+	if (typeof s !== "string") return "";
+	return s.charAt(0).toUpperCase() + s.slice(1);
+};
 
 const UserProfile = () => {
 	const { profile, getUser } = useContext(Context);
-	//Profile has all the data you need
 
 	useEffect(() => {
 		if (!profile.user) {
 			getUser();
 		}
 	}, [profile]);
-	console.log(profile);
+
+	if (profile && profile.user) {
+		const { avatar: avatarImg, name, surname, username, desc } = profile.user;
+		const { commentNum, commentArr, willWatchArr, watchingArr } = profile;
+		const fullname = `${capitalize(name)} ${capitalize(surname)}`;
+
+		return (
+			<>
+				{/* Background Cover */}
+				<Col lg={{ span: 16, offset: 4 }}>
+					<div span={12} offset={6}>
+						<img
+							className={style.coverImg}
+							src={
+								avatarImg
+									? "https://api.adnoto.co/" + avatarImg
+									: dummyUser.backgroundImage
+							}
+						/>
+					</div>
+				</Col>
+				<Col lg={{ span: 12, offset: 6 }}>
+					<Layout>
+						<Content>
+							<Row>
+								{/* Card Section */}
+								<Col flex={2} className={style.contentCover}>
+									<Card
+										hoverable
+										style={{ width: 240 }}
+										cover={
+											avatarImg ? (
+												<img
+													alt="content-cover"
+													src={"https://api.adnoto.co/" + avatarImg}
+												/>
+											) : (
+												<img alt="content-cover" src={dummyUser.avatarImg} />
+											)
+										}
+									>
+										<Meta
+											title={name && surname ? fullname : dummyUser.fullname}
+											description={`Total Comments: ${
+												commentNum ? commentNum : 0
+											}`}
+										/>
+									</Card>
+									{/* TODO add twiiter and instagram col to DB */}
+									<div className={style.socialMedia}>
+										{dummyUser.twitter && (
+											<Button
+												className={style.watchTrailerButton}
+												size={"large"}
+											>
+												<a href={dummyUser.twitter}>
+													<TwitterOutlined /> Twitter
+												</a>
+											</Button>
+										)}
+										{dummyUser.instagram && (
+											<Button
+												className={style.watchTrailerButton}
+												size={"large"}
+											>
+												<InstagramOutlined /> Instagram
+											</Button>
+										)}
+									</div>
+								</Col>
+								{/* Desc Section */}
+								<Col
+									flex={3}
+									className={style.descSection}
+									style={{ paddingTop: 40 }}
+								>
+									<div className={style.title}>
+										<Title>
+											{name && surname ? fullname : dummyUser.fullname}
+										</Title>
+										<Text className={style.creator}>
+											@{username ? username : dummyUser.username}
+										</Text>
+									</div>
+									<Row justify={"space-between"}>
+										<Text className={style.desc}>
+											{desc ? desc : dummyUser.desc}
+										</Text>
+									</Row>
+									{/* Comments */}
+									<CustomDivider title={"Popular Comments"} />
+
+									<PopulerComments
+										commentsArray={commentArr}
+										author={fullname}
+										avatarImg={avatarImg}
+									/>
+									<ProfileContentRow
+										title={"Currently Watching"}
+										contents={watchingArr}
+									/>
+									<ProfileContentRow
+										title={"Will Watch"}
+										contents={willWatchArr}
+									/>
+									{/* TODO Add Watched Contents*/}
+									{/* <ProfileContentRow
+										title={"Watched"}
+										contents={willWatchArr}
+									/> */}
+								</Col>
+							</Row>
+						</Content>
+					</Layout>
+				</Col>
+			</>
+		);
+	}
 	return (
 		<>
-			<Col lg={{ span: 16, offset: 4 }}>
-				<div span={12} offset={6}>
-					<img
-						className={style.coverImg}
-						src={
-							profile.user
-								? "https://api.adnoto.co/" + profile.user.avatar
-								: avatar
-						}
-						alt="aaa"
-					/>
-				</div>
-			</Col>
-			<Col lg={{ span: 12, offset: 6 }}>
-				<Layout>
-					<Content>
-						<Row>
-							{/* Card Section */}
-							<Col flex={2} className={style.contentCover}>
-								<Card
-									hoverable
-									style={{ width: 240 }}
-									cover={
-										<img
-											alt="content-cover"
-											src={
-												profile.user
-													? "https://api.adnoto.co/" + profile.user.avatar
-													: avatar
-											}
-										/>
-									}
-								>
-									<Meta
-										title={
-											profile.user
-												? profile.user.name + " " + profile.user.surname
-												: fullname
-										}
-										description={`Total Comments: ${profile.commentNum}`}
-									/>
-								</Card>
-								<div className={style.socialMedia}>
-									{twitter && (
-										<Button className={style.watchTrailerButton} size={"large"}>
-											<a href={twitter}>
-												<TwitterOutlined /> Twitter
-											</a>
-										</Button>
-									)}
-									{instagram && (
-										<Button className={style.watchTrailerButton} size={"large"}>
-											<InstagramOutlined /> Instagram
-										</Button>
-									)}
-								</div>
-							</Col>
-							{/* Desc Section */}
-							<Col
-								flex={3}
-								className={style.descSection}
-								style={{ paddingTop: 40 }}
-							>
-								<div className={style.title}>
-									<Title>
-										{profile.user.name + " "}
-										{profile.user.surname}
-									</Title>
-									<Text className={style.creator}>
-										@{profile.user.username}
-									</Text>
-								</div>
-								<Row justify={"space-between"}>
-									<Text className={style.desc}>{profile.user.desc}</Text>
-								</Row>
-								<CustomDivider title={"Popular Comments"} />
-								<CommentsList />
-
-								<ProfileContentRow
-									data={profile.willwatch}
-									title={"Currently Watching"}
-									contents={currentlyWatching}
-								/>
-								<ProfileContentRow
-									title={"Will Watch"}
-									contents={currentlyWatching}
-								/>
-								<ProfileContentRow
-									title={"Watched"}
-									contents={currentlyWatching}
-								/>
-							</Col>
-						</Row>
-					</Content>
-				</Layout>
-			</Col>
+			<Loading />
 		</>
 	);
 };

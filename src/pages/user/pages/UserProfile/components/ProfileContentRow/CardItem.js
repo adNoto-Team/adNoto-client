@@ -10,7 +10,9 @@ const CardItem = ({ title, imdb, coverImg }) => {
 				hoverable
 				style={{ width: 200 }}
 				className={style.cardItem}
-				cover={<img alt="content-cover" src={coverImg} />}
+				cover={
+					<img alt="content-cover" src={"https://api.adnoto.co/" + coverImg} />
+				}
 			>
 				<Meta title={title} description={`imdb: ${imdb}`} />
 			</Card>
