@@ -78,12 +78,13 @@ const CommentsList = ({ web, data, isWatched }) => {
 				renderItem={(item) => (
 					<li>
 						<CommentItem
+							id={item.comment.id}
 							author={item.user.username}
 							avatar={item.user.avatar === null ? "" : web + item.user.avatar}
 							datetime={item.comment.createdAt}
 							content={item.comment.text}
-							likeCount={0} // CHANGE HERE
-							isSpoiler={isWatched ? false : item.isSpoiler}
+							likeCount={item.comment.liked}
+							isSpoiler={isWatched ? false : item.comment.isSpoiler}
 						/>
 					</li>
 				)}
