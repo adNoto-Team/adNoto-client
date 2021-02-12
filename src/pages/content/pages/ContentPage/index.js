@@ -1,7 +1,6 @@
 import { Layout, Row, Col, Card, Typography, Button, Divider } from "antd";
 
 import style from "./style.module.css";
-import BigComments from "../../../user/pages/UserWelcome/components/Comments/index";
 import { VideoCameraFilled } from "@ant-design/icons";
 import Comments from  "./components/Comments"
 
