@@ -12,10 +12,11 @@ import AboutUs from "./pages/AboutUs";
 import ContentPage from './pages/content/pages/ContentPage';
 import EpisodePage from "./pages/content/pages/EpisodePage";
 import UserProfile from './pages/user/pages/UserProfile';
-
+import  Landing  from "./pages/landing";
 import { useEffect } from "react";
 import { Provider } from "./context/Context";
-import  Landing  from "./pages/landing";
+
+
  const App = () => {
 	return (
 		<div className="app">
@@ -25,8 +26,9 @@ import  Landing  from "./pages/landing";
 					<div style={{ paddingTop: "50px" }}>
 						<div className="content">
 							<Switch>
-								<Route path="/" exact component={Landing} />
-								<Route path="/login" component={LogIn} />
+								<Route path="/" exact component={UserWelcome} />
+								<Route path="/home" component={Landing}/>
+ 								<Route path="/login" component={LogIn} />
 								<Route path="/register" component={Register} />
 								<Route path="/aboutUs" component={AboutUs} />
 								<Route path="/contentPage" component={ContentPage} />
