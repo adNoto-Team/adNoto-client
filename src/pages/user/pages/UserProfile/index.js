@@ -11,7 +11,7 @@ import { useContext, useEffect } from "react";
 import Context from "../../../../context/Context";
 import PopulerComments from "./components/PopularComments";
 import Loading from "../../../../shared/components/Loading/index";
-import dummyUser from '../../../../DummyData/DummyUser';
+import dummyUser from "../../../../DummyData/DummyUser";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -33,7 +33,13 @@ const UserProfile = () => {
 
 	if (profile && profile.user) {
 		const { avatar: avatarImg, name, surname, username, desc } = profile.user;
-		const { commentNum, commentArr, willWatchArr, watchingArr } = profile;
+		const {
+			commentNum,
+			commentArr,
+			willWatchArr,
+			watchingArr,
+			watchedContentArr,
+		} = profile;
 		const fullname = `${capitalize(name)} ${capitalize(surname)}`;
 
 		return (
@@ -53,7 +59,7 @@ const UserProfile = () => {
 				</Col>
 				<Col lg={{ span: 12, offset: 6 }}>
 					<Layout>
-						<Content>
+						<Content style={{backgroundColor: "#EBF2F9"}}>
 							<Row>
 								{/* Card Section */}
 								<Col flex={2} className={style.contentCover}>
@@ -135,11 +141,10 @@ const UserProfile = () => {
 										title={"Will Watch"}
 										contents={willWatchArr}
 									/>
-									{/* TODO Add Watched Contents*/}
-									{/* <ProfileContentRow
+									<ProfileContentRow
 										title={"Watched"}
-										contents={willWatchArr}
-									/> */}
+										contents={watchedContentArr}
+									/>
 								</Col>
 							</Row>
 						</Content>

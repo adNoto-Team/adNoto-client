@@ -8,7 +8,7 @@ const CardItem = ({ title, imdb, coverImg }) => {
 		<Col className={style.unset} xs={12} sm={12} md={8} lg={8} xl={8}>
 			<Card
 				hoverable
-				style={{ width: 200 }}
+				style={{ width: 200, height: "100%" }}
 				className={style.cardItem}
 				cover={
 					<img alt="content-cover" src={"https://api.adnoto.co/" + coverImg} />
