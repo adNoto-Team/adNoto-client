@@ -4,7 +4,6 @@
   padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
   overflow: auto;
-  box-shadow: 0 0 30px #f3f1f1;
   height: 58px;
 }
 
@@ -16,9 +15,13 @@
 .logo a {
   display: inline-block;
   font-size: 20px;
-  padding: 19px 20px;
+  padding: 15px 20px;
   color: black;
   /* text-transform: capitalize; */
+}
+
+.logo img {
+  width: 28px;
 }
 
 .menuCon {
