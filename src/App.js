@@ -2,11 +2,13 @@ import "./App.less";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import UserWelcome from "./pages/user/pages/UserWelcome/index";
+import UserWelcome from "./pages/user/pages/UserWelcome";
 import LogIn from "./pages/auth/LogIn";
 import Register from "./pages/auth/Register";
-import Navbar from "./shared/components/Navbar/index";
-import AboutUs from "./pages/AboutUs/index";
+import Navbar from "./shared/components/Navbar";
+import AboutUs from "./pages/AboutUs";
+import ContentPage from './pages/content/pages/ContentPage';
+
 import { useEffect } from "react";
 import { Provider } from "./context/Context";
 
@@ -23,6 +25,7 @@ const App = () => {
 								<Route path="/login" component={LogIn} />
 								<Route path="/register" component={Register} />
 								<Route path="/aboutUs" component={AboutUs} />
+								<Route path="/contentPage" component={ContentPage} />
 							</Switch>
 						</div>
 					</div>
