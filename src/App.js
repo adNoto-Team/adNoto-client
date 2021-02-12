@@ -8,6 +8,7 @@ import Register from "./pages/auth/Register";
 import Navbar from "./shared/components/Navbar";
 import AboutUs from "./pages/AboutUs";
 import ContentPage from './pages/content/pages/ContentPage';
+import EpisodePage from "./pages/content/pages/EpisodePage";
 
 import { useEffect } from "react";
 import { Provider } from "./context/Context";
@@ -18,7 +19,7 @@ const App = () => {
 			<Provider>
 				<Router>
 					<Navbar />
-					<div>
+					<div style={{paddingTop: "50px"}}>
 						<div className="content">
 							<Switch>
 								<Route path="/" exact component={UserWelcome} />
@@ -26,6 +27,7 @@ const App = () => {
 								<Route path="/register" component={Register} />
 								<Route path="/aboutUs" component={AboutUs} />
 								<Route path="/contentPage" component={ContentPage} />
+								<Route path="/episodePage" component={EpisodePage} />
 							</Switch>
 						</div>
 					</div>

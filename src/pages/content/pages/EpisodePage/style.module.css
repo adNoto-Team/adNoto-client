@@ -1,0 +1,99 @@
+.desktopNextEpisodeButton {
+  display: none;
+  background-color: #232425;
+  margin-top: 15px;
+  width: 240px;
+  color: white;
+  transition: 0.4s;
+}
+
+.desktopNextEpisodeButton :nth-child(1) {
+  color: #faad14;
+}
+
+.nextEpisodeButtonWrapper {
+  position: absolute;
+}
+
+.nextEpisodeButton {
+  right: 7%;
+  top: 43%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nextEpisodeButton :nth-child(2) {
+  padding: 5px;
+}
+
+.descSection {
+  padding-left: 33%;
+}
+
+.cardSection {
+  position: fixed;
+}
+
+.creator {
+  right: -6px;
+  top: -21px;
+  position: relative;
+}
+
+.desc {
+  width: 100%;
+  max-width: 600px;
+}
+
+.watchTrailerButton {
+  background-color: #232425;
+  margin-top: 15px;
+  width: 240px;
+  color: white;
+  transition: 0.4s;
+}
+
+.watchTrailerButton :nth-child(1) {
+  color: #faad14;
+}
+
+
+@media only screen and (max-width: 480px) {
+  .descSection {
+    padding-left: 11px;
+    top: -20px;
+  }
+  .cardSection {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 29px;
+    position: unset;
+  }
+
+  .nextEpisodeButtonWrapper {
+    display: none;
+  }
+
+  .desktopNextEpisodeButton {
+    display: unset;
+  }
+}
+
+/* TODO Watch Trailer Button Hover Not working properly  */
+/* .watchTrailerButton :hover {
+    background-color: red;
+    color: white;
+    border: none;
+  } */
+
+/* .watchTrailerButton .ant-btn:hover,
+.ant-btn:focus {
+  background-color: #232425c2;
+  color: white;
+  border: none;
+} */

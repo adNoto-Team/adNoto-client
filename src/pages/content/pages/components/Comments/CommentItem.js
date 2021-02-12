@@ -50,8 +50,8 @@ const CommentItem = ({
 			{isSpoiler && (
 				<Alert
 					className="spoilerAlert"
-					message="Error"
-					description="This is an error message about copywriting."
+					message="Spoiler Alert!"
+					description="If you read this review, you might miss the whole secret!"
 					type="error"
 					showIcon
 					closable
