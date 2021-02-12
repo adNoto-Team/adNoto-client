@@ -1,0 +1,7 @@
+.ant-card-meta-title{
+    display: flex;
+    justify-content: center;
+}
+.ant-card-body{
+     padding: 24px 0 !important;
+}

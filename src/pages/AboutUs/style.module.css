@@ -1,6 +1,14 @@
-.developers {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.coverImage {
+  border-radius: 50% !important;
+}
+.Card {
+  width: 200px;
+  background: transparent !important;
+}
+
+@media only screen and (max-width: 480px) {
+  .memberCol {
+    display: flex !important;
+    justify-content: center !important;
+  }
 }
