@@ -1,0 +1,77 @@
+.rowSize {
+  width: 600px;
+}
+
+.socialMedia {
+  flex-direction: column;
+  display: flex;
+}
+
+.coverImg {
+  height: 235px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% 61%;
+  padding-top: 30px;
+}
+
+.contentCover {
+  z-index: 1;
+  top: -169px;
+}
+
+.creator {
+  right: -6px;
+  top: -21px;
+  position: relative;
+}
+
+.desc {
+  width: 100%;
+  max-width: 600px;
+}
+
+.watchTrailerButton {
+  background-color: #232425;
+  margin-top: 15px;
+  width: 240px;
+  color: white;
+  transition: 0.4s;
+}
+
+.watchTrailerButton :nth-child(1) {
+  color: #faad14;
+}
+
+@media only screen and (max-width: 480px) {
+  .descSection {
+    padding-left: 11px;
+    top: -200px;
+  }
+  .contentCover {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 29px;
+  }
+
+  .coverImg {
+    filter: blur(4px);
+    padding-top: unset;
+  }
+}
+
+/* TODO Watch Trailer Button Hover Not working properly  */
+/* .watchTrailerButton :hover {
+    background-color: red;
+    color: white;
+    border: none;
+  } */
+
+/* .watchTrailerButton .ant-btn:hover,
+.ant-btn:focus {
+  background-color: #232425c2;
+  color: white;
+  border: none;
+} */
