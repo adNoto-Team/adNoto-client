@@ -7,7 +7,7 @@ const { Title } = Typography;
 const CustomDivider = ({ level = 3, title }) => {
 	return (
 		<>
-			<Divider orientation="left" className="customDivider">
+			<Divider orientation="left" className="customDivider" >
 				<Title level={level}>{title}</Title>
 			</Divider>
 		</>
