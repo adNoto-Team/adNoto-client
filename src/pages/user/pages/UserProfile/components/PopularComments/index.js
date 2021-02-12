@@ -50,9 +50,6 @@ const data = [
 ];
 
 const PopulerComments = ({ author, avatarImg, commentsArray }) => {
-	console.log("author", author);
-	console.log("avatarImg", avatarImg);
-	console.log("commentsArray", commentsArray);
 	return (
 		<>
 			{commentsArray &&

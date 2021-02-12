@@ -5,7 +5,6 @@ import CardItem from "./CardItem";
 import style from "./style.module.css";
 
 const ProfileContentRow = ({ title, contents }) => {
-	console.log("contents lallala", contents);
 	if (contents) {
 		return (
 			<>
