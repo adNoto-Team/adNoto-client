@@ -2,11 +2,9 @@ import {
 	Form,
 	Input,
 	Button,
-	Checkbox,
 	Divider,
 	Col,
 	Row,
-	Alert,
 	Typography,
 	message,
 } from "antd";
@@ -20,7 +18,7 @@ import logo from "../../../assets/images/adnoto.png";
 
 const { Title } = Typography;
 const LogIn = () => {
-	const { login, dbMessage, token } = useContext(Context);
+	const { login, dbMessage, token, isToken } = useContext(Context);
 	const [isOnFinish, setIsOnFinish] = useState(false);
 	const onFinish = (values) => {
 		login({
@@ -42,41 +40,44 @@ const LogIn = () => {
 	}, [dbMessage, token, isOnFinish]);
 
 	return (
-		<Form
-			onFinish={onFinish}
-			className={styles.loginForm}
-			initialValues={{ remember: true }}
-		>
-			<img
-				src={logo}
-				alt="adNoto Icon"
-				onError="this.src = 'https://i.hizliresim.com/wp2lva.png'"
-			/>
+		<div>
+			{isToken && <Redirect exact to="/"></Redirect>}
 
-			<Form.Item
-				name="username"
-				rules={[{ required: true, message: "Please input your Username!" }]}
-				className={styles.formItem}
+			<Form
+				onFinish={onFinish}
+				className={styles.loginForm}
+				initialValues={{ remember: true }}
 			>
-				<Input
-					prefix={<UserOutlined className={"site-form-item-icon"} />}
-					placeholder="Username"
+				<img
+					src={logo}
+					alt="adNoto Icon"
+					onError="this.src = 'https://i.hizliresim.com/wp2lva.png'"
 				/>
-			</Form.Item>
-			<Form.Item
-				name="password"
-				rules={[{ required: true, message: "Please input your Password!" }]}
-				className={styles.formItem}
-				style={{ marginBottom: "4px" }}
-			>
-				<Input
-					prefix={<LockOutlined className="	siteFormItemIcon" />}
-					type="password"
-					placeholder="Password"
-				/>
-			</Form.Item>
-			<Form.Item>
-				{/* <Form.Item
+
+				<Form.Item
+					name="username"
+					rules={[{ required: true, message: "Please input your Username!" }]}
+					className={styles.formItem}
+				>
+					<Input
+						prefix={<UserOutlined className={"site-form-item-icon"} />}
+						placeholder="Username"
+					/>
+				</Form.Item>
+				<Form.Item
+					name="password"
+					rules={[{ required: true, message: "Please input your Password!" }]}
+					className={styles.formItem}
+					style={{ marginBottom: "4px" }}
+				>
+					<Input
+						prefix={<LockOutlined className="	siteFormItemIcon" />}
+						type="password"
+						placeholder="Password"
+					/>
+				</Form.Item>
+				<Form.Item>
+					{/* <Form.Item
 					name="remember"
 					valuePropName="checked"
 					noStyle
@@ -85,14 +86,18 @@ const LogIn = () => {
 					<Checkbox>Remember me</Checkbox>
 				</Form.Item> */}
 
-				<Row style={{ marginTop: "5px" }}>
-					<Col span={24} className={styles.loginButton}>
-						<Button type="primary" htmlType="submit" style={{ width: "100%" }}>
-							Log in
-						</Button>
-					</Col>
-				</Row>
-				{/* <Row style={{ marginTop: "5px" }}>
+					<Row style={{ marginTop: "5px" }}>
+						<Col span={24} className={styles.loginButton}>
+							<Button
+								type="primary"
+								htmlType="submit"
+								style={{ width: "100%" }}
+							>
+								Log in
+							</Button>
+						</Col>
+					</Row>
+					{/* <Row style={{ marginTop: "5px" }}>
 					<Col span={24}>
 						{dbMessage !== "" && (
 							<Alert
@@ -103,31 +108,32 @@ const LogIn = () => {
 						)}
 					</Col>
 				</Row> */}
-				<Divider orientation="center">
-					<Row>
-						<a className={styles.loginFormForgot} href="">
-							Forgotten password ?
-						</a>
-					</Row>
-					<hr style={{ width: "150px" }}></hr>
-				</Divider>
+					<Divider orientation="center">
+						<Row>
+							<a className={styles.loginFormForgot} href="">
+								Forgotten password ?
+							</a>
+						</Row>
+						<hr style={{ width: "150px" }}></hr>
+					</Divider>
 
-				<Link to="/register">
-					<Button
-						name="createNewAccout"
-						htmlType={"submit"}
-						style={{
-							width: "100%",
-							height: "55px",
-							backgroundColor: "#52c41a",
-							color: "white",
-						}}
-					>
-						Create New Account
-					</Button>
-				</Link>
-			</Form.Item>
-		</Form>
+					<Link to="/register">
+						<Button
+							name="createNewAccout"
+							htmlType={"submit"}
+							style={{
+								width: "100%",
+								height: "55px",
+								backgroundColor: "#52c41a",
+								color: "white",
+							}}
+						>
+							Create New Account
+						</Button>
+					</Link>
+				</Form.Item>
+			</Form>
+		</div>
 	);
 };
 

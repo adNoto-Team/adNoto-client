@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import Context from "../../../context/Context";
-const RightMenuDropDown = ({ a }) => {
+const RightMenuDropDown = () => {
 	const { setIsToken, user, getUser, profile } = useContext(Context);
 	let history = useHistory();
 	function handleButtonClick(e) {
