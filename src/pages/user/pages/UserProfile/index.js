@@ -3,13 +3,14 @@ import { Layout, Row, Col, Card, Typography, Button } from "antd";
 import { InstagramOutlined, TwitterOutlined } from "@ant-design/icons";
 
 import CustomDivider from "../../../../shared/components/CustomDivider/index";
-import CommentsList from "../../../content/pages/components/Comments/CommentsList";
 import ProfileContentRow from "./components/ProfileContentRow/index";
 
 import style from "./style.module.css";
 import "./style.css";
 import { useContext, useEffect } from "react";
 import Context from "../../../../context/Context";
+import PopulerComments from "./components/PopularComments";
+import Loading from "../../../../shared/components/Loading/index";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -47,6 +48,11 @@ const dummyUser = {
 	],
 };
 
+const capitalize = (s) => {
+	if (typeof s !== "string") return "";
+	return s.charAt(0).toUpperCase() + s.slice(1);
+};
+
 const UserProfile = () => {
 	const { profile, getUser } = useContext(Context);
 
@@ -56,114 +62,128 @@ const UserProfile = () => {
 		}
 	}, [profile]);
 
-	const { avatar: avatarImg, name, surname, username, desc } = profile.user;
+	if (profile && profile.user) {
+		const { avatar: avatarImg, name, surname, username, desc } = profile.user;
+		const { commentNum, commentArr } = profile;
+		const fullname = `${capitalize(name)} ${capitalize(surname)}`;
 
-	const { commentNum } = profile;
+		return (
+			<>
+				{/* Background Cover */}
+				<Col lg={{ span: 16, offset: 4 }}>
+					<div span={12} offset={6}>
+						<img
+							className={style.coverImg}
+							src={
+								avatarImg
+									? "https://api.adnoto.co/" + avatarImg
+									: dummyUser.backgroundImage
+							}
+						/>
+					</div>
+				</Col>
+				<Col lg={{ span: 12, offset: 6 }}>
+					<Layout>
+						<Content>
+							<Row>
+								{/* Card Section */}
+								<Col flex={2} className={style.contentCover}>
+									<Card
+										hoverable
+										style={{ width: 240 }}
+										cover={
+											avatarImg ? (
+												<img
+													alt="content-cover"
+													src={"https://api.adnoto.co/" + avatarImg}
+												/>
+											) : (
+												<img alt="content-cover" src={dummyUser.avatarImg} />
+											)
+										}
+									>
+										<Meta
+											title={name && surname ? fullname : dummyUser.fullname}
+											description={`Total Comments: ${
+												commentNum ? commentNum : 0
+											}`}
+										/>
+									</Card>
+									{/* TODO add twiiter and instagram col to DB */}
+									<div className={style.socialMedia}>
+										{dummyUser.twitter && (
+											<Button
+												className={style.watchTrailerButton}
+												size={"large"}
+											>
+												<a href={dummyUser.twitter}>
+													<TwitterOutlined /> Twitter
+												</a>
+											</Button>
+										)}
+										{dummyUser.instagram && (
+											<Button
+												className={style.watchTrailerButton}
+												size={"large"}
+											>
+												<InstagramOutlined /> Instagram
+											</Button>
+										)}
+									</div>
+								</Col>
+								{/* Desc Section */}
+								<Col
+									flex={3}
+									className={style.descSection}
+									style={{ paddingTop: 40 }}
+								>
+									<div className={style.title}>
+										<Title>
+											{name && surname ? fullname : dummyUser.fullname}
+										</Title>
+										<Text className={style.creator}>
+											@{username ? username : dummyUser.username}
+										</Text>
+									</div>
+									<Row justify={"space-between"}>
+										<Text className={style.desc}>
+											{desc ? desc : dummyUser.desc}
+										</Text>
+									</Row>
+									{/* Comments */}
+									<CustomDivider title={"Popular Comments"} />
 
+									<PopulerComments
+										commentsArray={commentArr}
+										author={fullname}
+										avatarImg={avatarImg}
+									/>
+
+									{/* <CommentsList /> */}
+
+									<ProfileContentRow
+										title={"Currently Watching"}
+										contents={dummyUser.currentlyWatching}
+									/>
+									<ProfileContentRow
+										title={"Will Watch"}
+										contents={dummyUser.currentlyWatching}
+									/>
+									<ProfileContentRow
+										title={"Watched"}
+										contents={dummyUser.currentlyWatching}
+									/>
+								</Col>
+							</Row>
+						</Content>
+					</Layout>
+				</Col>
+			</>
+		);
+	}
 	return (
 		<>
-			{/* Background Cover */}
-			<Col lg={{ span: 16, offset: 4 }}>
-				<div span={12} offset={6}>
-					<img
-						className={style.coverImg}
-						src={
-							avatarImg
-								? "https://api.adnoto.co/" + avatarImg
-								: dummyUser.backgroundImage
-						}
-					/>
-				</div>
-			</Col>
-			<Col lg={{ span: 12, offset: 6 }}>
-				<Layout>
-					<Content>
-						<Row>
-							{/* Card Section */}
-							<Col flex={2} className={style.contentCover}>
-								<Card
-									hoverable
-									style={{ width: 240 }}
-									cover={
-										avatarImg ? (
-											<img
-												alt="content-cover"
-												src={"https://api.adnoto.co/" + avatarImg}
-											/>
-										) : (
-											<img alt="content-cover" src={dummyUser.avatarImg} />
-										)
-									}
-								>
-									<Meta
-										title={
-											name && surname
-												? name + " " + surname
-												: dummyUser.fullname
-										}
-										description={`Total Comments: ${
-											commentNum ? commentNum : 0
-										}`}
-									/>
-								</Card>
-								{/* TODO add twiiter and instagram col to DB */}
-								<div className={style.socialMedia}>
-									{dummyUser.twitter && (
-										<Button className={style.watchTrailerButton} size={"large"}>
-											<a href={dummyUser.twitter}>
-												<TwitterOutlined /> Twitter
-											</a>
-										</Button>
-									)}
-									{dummyUser.instagram && (
-										<Button className={style.watchTrailerButton} size={"large"}>
-											<InstagramOutlined /> Instagram
-										</Button>
-									)}
-								</div>
-							</Col>
-							{/* Desc Section */}
-							<Col
-								flex={3}
-								className={style.descSection}
-								style={{ paddingTop: 40 }}
-							>
-								<div className={style.title}>
-									<Title>
-										{name && surname
-											? name + " " + surname
-											: dummyUser.fullname}
-									</Title>
-									<Text className={style.creator}>
-										@{username ? username : dummyUser.username}
-									</Text>
-								</div>
-								<Row justify={"space-between"}>
-									<Text className={style.desc}>
-										{desc ? desc : dummyUser.desc}
-									</Text>
-								</Row>
-								{/* Comments */}
-								<CustomDivider title={"Popular Comments"} />
-								<CommentsList />
-
-								<ProfileContentRow
-									title={"Currently Watching"}
-									contents={dummyUser.currentlyWatching}
-								/>
-								<ProfileContentRow
-									title={"Will Watch"}
-									contents={dummyUser.currentlyWatching}
-								/>
-								<ProfileContentRow
-									title={"Watched"}
-									contents={dummyUser.currentlyWatching}
-								/>
-							</Col>
-						</Row>
-					</Content>
-				</Layout>
-			</Col>
+			<Loading />
 		</>
 	);
 };
