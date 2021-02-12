@@ -1,9 +1,0 @@
-.ant-col.style_descSection__3ZeuN > div.ant-row.ant-row-center {
-  width: 611px;
-}
-
-@media only screen and (max-width: 480px) {
-  .ant-col.style_descSection__3ZeuN > div.ant-row.ant-row-center {
-    width: unset;
-  }
-}

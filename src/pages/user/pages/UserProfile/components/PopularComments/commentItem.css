@@ -13,10 +13,6 @@
   right: -44px;
   width: 100%;
   position: absolute;
-  height: calc(100% - 50px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .ant-comment-content-detail {
@@ -31,11 +27,8 @@
   }
 
   .spoilerAlert {
+    top: 21%;
     right: 5%;
     width: 84%;
-    height: calc(100% - 50px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
