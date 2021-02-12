@@ -7,9 +7,6 @@ import "./newComment.css";
 
 const { TextArea } = Input;
 
-{
-	/* TODO FIX replay number */
-}
 const CommentList = ({ comments }) => (
 	<List
 		dataSource={comments}
