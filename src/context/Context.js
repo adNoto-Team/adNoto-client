@@ -116,6 +116,16 @@ export const Provider = ({ children }) => {
 		setComments(data);
 	};
 
+	const likeComment = async (id) => {
+		const { data } = await db.get(`/comment/like/${id}`, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		return data;
+	};
+
 	const sendCommentofContent = async (id, text, isSpoiler) => {
 		const { data } = await db.post(
 			`/comment/content/${id}`,
@@ -129,8 +139,11 @@ export const Provider = ({ children }) => {
 		);
 		setContentDetails((a) => {
 			a.commentsArr.push({
-				comment: data,
-				like: 0,
+				comment: {
+					...data,
+
+					liked: 0,
+				},
 				user: {
 					username: user.username,
 					avatar: user.avatar,
@@ -143,7 +156,7 @@ export const Provider = ({ children }) => {
 			result: [
 				{
 					comment: data,
-					like: 0,
+					liked: 0,
 					user: {
 						username: user.username,
 						avatar: user.avatar,
@@ -183,6 +196,7 @@ export const Provider = ({ children }) => {
 		getCommentsofEpisode,
 		comments,
 		sendCommentofContent,
+		likeComment,
 	};
 
 	return (
