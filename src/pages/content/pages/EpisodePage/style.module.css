@@ -1,3 +1,7 @@
+#root > div > div.footer {
+  display: none;
+}
+
 .desktopNextEpisodeButton {
   display: none;
   background-color: #232425;

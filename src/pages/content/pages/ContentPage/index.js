@@ -8,6 +8,7 @@ import CommentsList from "../components/Comments/CommentsList";
 import NewComment from "../components/Comments/NewComment";
 import Loading from "../../../../shared/components/Loading";
 import { useParams } from "react-router-dom";
+import Footer from '../../../../shared/components/Footer/index';
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -117,6 +118,7 @@ const ContentPage = () => {
 						</Content>
 					</Layout>
 				</Col>
+				<Footer />
 			</>
 		);
 	else {

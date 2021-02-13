@@ -14,6 +14,7 @@ import UserProfile from "./pages/user/pages/UserProfile";
 import Landing from "./pages/landing";
 import { useEffect } from "react";
 import { Provider } from "./context/Context";
+import Footer from "./shared/components/Footer";
 
 const App = () => {
 	return (
