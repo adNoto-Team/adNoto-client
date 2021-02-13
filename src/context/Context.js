@@ -121,6 +121,37 @@ export const Provider = ({ children }) => {
 		setComments(data);
 	};
 
+	const watchLaterContent = async (id) => {
+		console.log("WILL WATCHED", id);
+		const { data } = await db.get(`/content/watchlater/${id}`, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		return data;
+	};
+	const watchedContent = async (id) => {
+		console.log("WATCHED", id);
+		const { data } = await db.get(`/content/watch/${id}`, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		return data;
+	};
+
+	const watchedEpisode = async (id) => {
+		const { data } = await db.get(`/episode/watch/${id}`, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		return data;
+	};
+
 	const likeComment = async (id) => {
 		const { data } = await db.get(`/comment/like/${id}`, {
 			headers: {
@@ -216,6 +247,9 @@ export const Provider = ({ children }) => {
 		sendCommentofContent,
 		likeComment,
 		setAvatar,
+		watchLaterContent,
+		watchedContent,
+		watchedEpisode,
 	};
 
 	return (

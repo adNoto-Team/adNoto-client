@@ -1,4 +1,4 @@
-import { Layout, Row, Col, Card, Typography, Button } from "antd";
+import { Layout, Row, Col, Card, Typography, Button, Radio } from "antd";
 import { useContext, useEffect, useState } from "react";
 import Context from "../../../../context/Context";
 import style from "./style.module.css";
@@ -8,7 +8,7 @@ import CommentsList from "../components/Comments/CommentsList";
 import NewComment from "../components/Comments/NewComment";
 import Loading from "../../../../shared/components/Loading";
 import { useParams } from "react-router-dom";
-import Footer from '../../../../shared/components/Footer/index';
+import Footer from "../../../../shared/components/Footer/index";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -36,11 +36,20 @@ const ContentPage = () => {
 		website,
 		user,
 		sendCommentofContent,
+		watchLaterContent,
+		watchedContent,
 	} = useContext(Context);
 
 	useEffect(() => {
 		getContentDetails(curId);
 	}, [user]);
+
+	const onChange = async (e) => {
+		console.log(`radio checked = ${e.target.value}`);
+		e.target.value == "will"
+			? await watchLaterContent(curId)
+			: await watchedContent(curId);
+	};
 
 	if (contentDetails && contentDetails.name)
 		return (
@@ -75,9 +84,24 @@ const ContentPage = () => {
 											description={contentDetails.director}
 										/>
 									</Card>
-									<Button className={style.watchTrailerButton} size={"large"}>
-										<VideoCameraFilled /> Watch Trailer
-									</Button>
+
+									<div className={style.coverBottom}>
+										<Button className={style.watchTrailerButton} size={"large"}>
+											<VideoCameraFilled /> Watch Trailer
+										</Button>
+
+										<Radio.Group
+											buttonStyle="solid"
+											className={style.radioButtons}
+											onChange={onChange}
+											defaultValue="will"
+											// size="large"
+										>
+											{/* <Radio.Button value="now">Currently Watching</Radio.Button> */}
+											<Radio.Button value="will">Will Watch</Radio.Button>
+											<Radio.Button value="was">Watched</Radio.Button>
+										</Radio.Group>
+									</div>
 								</Col>
 								{/* Desc Section */}
 								<Col
@@ -101,7 +125,6 @@ const ContentPage = () => {
 									</div>
 
 									<CustomDivider title={"Top Comments"} />
-
 									<CommentsList
 										web={website}
 										data={contentDetails.commentsArr}
