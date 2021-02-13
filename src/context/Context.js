@@ -14,9 +14,10 @@ export const Provider = ({ children }) => {
 	const [feed, setFeed] = useState([]);
 	const [contentDetails, setContentDetails] = useState({});
 	const [randomContent, setRandomContent] = useState({});
-
 	const [comments, setComments] = useState([]);
+
 	const website = "https://api.adnoto.co/";
+
 	useEffect(() => {
 		setMovieData([]);
 	}, []);
@@ -38,6 +39,7 @@ export const Provider = ({ children }) => {
 			setToken(data.token);
 		}
 	};
+
 	const login = async (userData) => {
 		const { data } = await db.post("/login", userData);
 
@@ -78,6 +80,7 @@ export const Provider = ({ children }) => {
 		});
 		setRandomContent(data);
 	};
+
 	const getFeed = async () => {
 		const { data } = await db.get("/feed", {
 			headers: {
@@ -87,6 +90,7 @@ export const Provider = ({ children }) => {
 		});
 		setFeed(data);
 	};
+
 	const getContentDetails = async (id) => {
 		const { data } = await db.get(`/content/${id}`, {
 			headers: {
@@ -106,6 +110,7 @@ export const Provider = ({ children }) => {
 		});
 		setComments(data);
 	};
+
 	const getCommentsofContent = async (id) => {
 		const { data } = await db.get(`/comment/content/${id}`, {
 			headers: {
@@ -166,6 +171,19 @@ export const Provider = ({ children }) => {
 		});
 	};
 
+	// TODO NOT WORKING!!!
+	const setAvatar = async (file) => {
+		const formData = new FormData();
+		formData.append("avatarPic", file, file.name);
+		const contents = await db.post(`/user/avatar`, formData, {
+			headers: {
+				Authorization: "Bearer " + token,
+				"Content-Type": "application/json",
+			},
+		});
+		console.log(contents);
+	};
+
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
 			setIsToken(true);
@@ -197,6 +215,7 @@ export const Provider = ({ children }) => {
 		comments,
 		sendCommentofContent,
 		likeComment,
+		setAvatar,
 	};
 
 	return (

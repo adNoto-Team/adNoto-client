@@ -61,7 +61,7 @@ const EpisodePage = () => {
 					<Text> Next Episode</Text>
 				</div>
 			</div>
-			<Layout>
+			<Layout style={{ backgroundColor: "#EBF2F9" }}>
 				<EpisodeSider />
 				<Col lg={{ span: 12, offset: 6 }} style={{ paddingTop: "50px" }}>
 					<Content>

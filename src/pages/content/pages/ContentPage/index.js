@@ -55,7 +55,7 @@ const ContentPage = () => {
 				</Col>
 				<Col lg={{ span: 12, offset: 6 }}>
 					<Layout>
-						<Content>
+						<Content style={{ backgroundColor: "#EBF2F9" }}>
 							<Row>
 								{/* Card Section */}
 								<Col flex={2} className={style.contentCover}>

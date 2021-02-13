@@ -17,6 +17,7 @@ const CommentItem = ({
 	const [likes, setLikes] = useState(likeCount);
 	const [action, setAction] = useState(null);
 	const { likeComment } = useContext(Context);
+	
 	const like = async () => {
 		const res = await likeComment(id);
 		setLikes((val) => {
