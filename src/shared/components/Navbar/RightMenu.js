@@ -42,7 +42,7 @@ const RightMenu = () => {
 								/>
 							) : (
 								<Avatar
-									src={"https://api.adnoto.co/" + user.avatar}
+									src={"https://adnoto.karpuz.surf/" + user.avatar}
 									alt={"userPic"}
 								/>
 							)}

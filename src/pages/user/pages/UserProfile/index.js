@@ -13,7 +13,7 @@ import PopulerComments from "./components/PopularComments";
 import Loading from "../../../../shared/components/Loading/index";
 import dummyUser from "../../../../DummyData/DummyUser";
 import SettingsModal from "./components/SettingsModal";
-import Footer from '../../../../shared/components/Footer/index';
+import Footer from "../../../../shared/components/Footer/index";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -53,7 +53,7 @@ const UserProfile = () => {
 							className={style.coverImg}
 							src={
 								avatarImg
-									? "https://api.adnoto.co/" + avatarImg
+									? "https://adnoto.karpuz.surf/" + avatarImg
 									: dummyUser.backgroundImage
 							}
 						/>
@@ -72,7 +72,7 @@ const UserProfile = () => {
 											avatarImg ? (
 												<img
 													alt="content-cover"
-													src={"https://api.adnoto.co/" + avatarImg}
+													src={"https://adnoto.karpuz.surf/" + avatarImg}
 												/>
 											) : (
 												<img alt="content-cover" src={dummyUser.avatarImg} />

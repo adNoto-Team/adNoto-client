@@ -16,7 +16,7 @@ export const Provider = ({ children }) => {
 	const [randomContent, setRandomContent] = useState({});
 	const [comments, setComments] = useState([]);
 
-	const website = "https://api.adnoto.co/";
+	const website = "https://adnoto.karpuz.surf/";
 
 	useEffect(() => {
 		setMovieData([]);
@@ -201,9 +201,37 @@ export const Provider = ({ children }) => {
 			],
 		});
 	};
+	const sendCommentofEpisode = async (id, text, isSpoiler) => {
+		const { data } = await db.post(
+			`/comment/episode/${id}`,
+			{ text, isSpoiler },
+			{
+				headers: {
+					Authorization: "Bearer " + token,
+					"Content-Type": "application/json",
+				},
+			}
+		);
+
+		setComments({
+			...comments,
+			result: [
+				...comments.result,
+				{
+					comment: { ...data, liked: 0 },
+
+					user: {
+						username: user.username,
+						avatar: user.avatar,
+					},
+				},
+			],
+		});
+	};
 
 	// TODO NOT WORKING!!!
 	const setAvatar = async (file) => {
+		console.log("from Context: ", file);
 		const formData = new FormData();
 		formData.append("avatarPic", file, file.name);
 		const contents = await db.post(`/user/avatar`, formData, {
@@ -223,6 +251,7 @@ export const Provider = ({ children }) => {
 	}, [token]);
 
 	const values = {
+		sendCommentofEpisode,
 		website,
 		signup,
 		login,

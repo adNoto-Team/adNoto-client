@@ -11,7 +11,10 @@ const CardItem = ({ title, imdb, coverImg }) => {
 				style={{ width: 200, height: "100%" }}
 				className={style.cardItem}
 				cover={
-					<img alt="content-cover" src={"https://api.adnoto.co/" + coverImg} />
+					<img
+						alt="content-cover"
+						src={"https://adnoto.karpuz.surf/" + coverImg}
+					/>
 				}
 			>
 				<Meta title={title} description={`imdb: ${imdb}`} />

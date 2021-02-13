@@ -30,8 +30,8 @@ const App = () => {
 								<Route path="/login" component={LogIn} />
 								<Route path="/register" component={Register} />
 								<Route path="/aboutUs" component={AboutUs} />
-								<Route path="/contentPage/:id" component={ContentPage} />
-								<Route path="/episodePage" component={EpisodePage} />
+								<Route path="/content/:id/:eid" component={EpisodePage} />
+								<Route path="/content/:id" component={ContentPage} />
 								<Route path="/userProfile" component={UserProfile} />
 							</Switch>
 						</div>

@@ -81,19 +81,19 @@ const trendContent = {
 const UserWelcome = () => {
 	const { feed, getFeed } = useContext(Context);
 	const { randomContent, getRandomContent } = useContext(Context);
-	const { profile, getUser } = useContext(Context);
+	const { profile, getUser, user } = useContext(Context);
 
 	useEffect(() => {
 		if (!feed.length) {
 			getFeed();
 		}
-		if (!profile.user) {
-			getRandomContent();
-		}
-		if (!randomContent.length) {
+		if (!profile.user || user) {
 			getUser();
 		}
-	}, [feed]);
+		if (!randomContent.length) {
+			getRandomContent();
+		}
+	}, [feed, user]);
 
 	if (feed) {
 		const feedArray = [...feed];

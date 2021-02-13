@@ -17,7 +17,7 @@ const ContentRow = ({ title, contents }) => {
 							imdb={content.imbdScore}
 							coverImg={
 								content.avatar
-									? "https://api.adnoto.co/" + content.avatar
+									? "https://adnoto.karpuz.surf/" + content.avatar
 									: content.coverImg
 							}
 						/>
