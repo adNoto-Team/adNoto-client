@@ -77,10 +77,14 @@ const AboutUs = () => {
 					<Title level={3}>Special thanks to </Title>
 				</Divider>
 				<Row justify="center">
-					<Image
-						preview={false}
-						src={"https://www.tpfund.org/wp-content/uploads/2019/07/logo-1.png"}
-					/>
+					<a href="https://www.kodluyoruz.org/">
+						<Image
+							preview={false}
+							src={
+								"https://www.tpfund.org/wp-content/uploads/2019/07/logo-1.png"
+							}
+						/>
+					</a>
 				</Row>
 			</div>
 		</>
