@@ -11,6 +11,14 @@
   top: -169px;
 }
 
+.coverBottom{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  text-align: center;
+}
+
 .creator {
   right: -6px;
   top: -21px;
@@ -32,6 +40,18 @@
 
 .watchTrailerButton :nth-child(1) {
   color: #faad14;
+}
+
+.radioButtons {
+  /* background-color: #232425; */
+  margin-top: 15px;
+  width: 100%;
+  color: white;
+  transition: 0.4s;
+}
+
+.radioButtons :nth-child(1) {
+  /* color: #faad14; */
 }
 
 .seasonRow {
