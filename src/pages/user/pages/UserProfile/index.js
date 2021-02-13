@@ -12,6 +12,7 @@ import Context from "../../../../context/Context";
 import PopulerComments from "./components/PopularComments";
 import Loading from "../../../../shared/components/Loading/index";
 import dummyUser from "../../../../DummyData/DummyUser";
+import SettingsModal from "./components/SettingsModal";
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -59,7 +60,7 @@ const UserProfile = () => {
 				</Col>
 				<Col lg={{ span: 12, offset: 6 }}>
 					<Layout>
-						<Content style={{backgroundColor: "#EBF2F9"}}>
+						<Content style={{ backgroundColor: "#EBF2F9" }}>
 							<Row>
 								{/* Card Section */}
 								<Col flex={2} className={style.contentCover}>
@@ -86,6 +87,8 @@ const UserProfile = () => {
 									</Card>
 									{/* TODO add twiiter and instagram col to DB */}
 									<div className={style.socialMedia}>
+										<SettingsModal />
+
 										{dummyUser.twitter && (
 											<Button
 												className={style.watchTrailerButton}
@@ -96,6 +99,7 @@ const UserProfile = () => {
 												</a>
 											</Button>
 										)}
+
 										{dummyUser.instagram && (
 											<Button
 												className={style.watchTrailerButton}

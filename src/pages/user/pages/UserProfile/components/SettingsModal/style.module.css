@@ -1,0 +1,11 @@
+.settingsButton {
+  background-color: #232425;
+  margin-top: 15px;
+  width: 240px;
+  color: white;
+  transition: 0.4s;
+}
+
+.settingsButton :nth-child(1) {
+  color: #faad14;
+}
