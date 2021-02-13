@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import Dropdown from "./RightMenuDropDown";
 import Context from "../../../context/Context";
-import "./style.css"
+import "./style.css";
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -32,7 +32,10 @@ const RightMenu = () => {
 			) : (
 				<div>
 					<Menu mode={md ? "horizontal" : "inline"}>
-						<Menu.Item key="app" style={{ margin: "0", height: "100%" }}>
+						<Menu.Item
+							key="app"
+							style={{ margin: "0", height: "100%", top: -1 }}
+						>
 							{user.avatar === null ? (
 								<Avatar
 									src={"https://supercharge.info/images/avatar-placeholder.png"}
