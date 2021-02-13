@@ -80,7 +80,11 @@ const CommentsList = ({ web, data, isWatched }) => {
 						<CommentItem
 							id={item.comment.id}
 							author={item.user.username}
-							avatar={item.user.avatar === null ? "" : web + item.user.avatar}
+							avatar={
+								item.user.avatar === null
+									? "https://supercharge.info/images/avatar-placeholder.png"
+									: web + item.user.avatar
+							}
 							datetime={item.comment.createdAt}
 							content={item.comment.text}
 							likeCount={item.comment.liked}
