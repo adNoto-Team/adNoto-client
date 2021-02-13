@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-	baseURL: "https://api.adnoto.co",
+	baseURL: "https://adnoto.karpuz.surf",
 });

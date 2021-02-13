@@ -29,7 +29,7 @@ const CommentItem = ({ author, avatar, from, content, likeCount }) => {
 			<Comment
 				actions={actions}
 				author={author}
-				avatar={"https://api.adnoto.co/" + avatar}
+				avatar={"https://adnoto.karpuz.surf/" + avatar}
 				content={<p>{content}</p>}
 				datetime={
 					<Tooltip
