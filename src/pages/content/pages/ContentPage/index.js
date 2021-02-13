@@ -7,7 +7,7 @@ import CustomDivider from "../../../../shared/components/CustomDivider";
 import CommentsList from "../components/Comments/CommentsList";
 import NewComment from "../components/Comments/NewComment";
 import Loading from "../../../../shared/components/Loading";
-import { useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Footer from "../../../../shared/components/Footer/index";
 
 const { Content } = Layout;
@@ -29,7 +29,7 @@ const content = {
 
 const ContentPage = () => {
 	let { id: curId } = useParams();
-
+	let history = useHistory();
 	const {
 		getContentDetails,
 		contentDetails,
@@ -110,7 +110,7 @@ const ContentPage = () => {
 									style={{ paddingTop: 40 }}
 								>
 									<div className={style.title}>
-										<Title>{content.title}</Title>
+										<Title>{contentDetails.name}</Title>
 										<Text className={style.creator}>
 											{contentDetails.director}
 										</Text>
@@ -120,7 +120,9 @@ const ContentPage = () => {
 									</Row>
 									<div className={style.seasonRow}>
 										{contentDetails.seasons.map((a, i) => (
-											<Button>Season {a.seasonNumber} </Button>
+											<Link to={`/content/${curId}/${a.episodes[0].id}`}>
+												<Button>Season {a.seasonNumber} </Button>
+											</Link>
 										))}
 									</div>
 
