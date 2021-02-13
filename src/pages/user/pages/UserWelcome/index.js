@@ -1,8 +1,9 @@
 import { Layout, Col } from "antd";
 
-import ContentRow from './components/ContentRow/index';
+import ContentRow from './components/ContentRow';
 import RandomContent from "./components/RandomContet";
 import ContentBilbord from "./components/ContentBilbord";
+import Footer from '../../../../shared/components/Footer';
 
 const { Content } = Layout;
 
@@ -106,6 +107,7 @@ const UserWelcome = () => {
 					</Content>
 				</Layout>
 			</Col>
+			<Footer />
 		</>
 	);
 };

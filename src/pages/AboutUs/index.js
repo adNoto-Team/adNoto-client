@@ -1,4 +1,5 @@
 import { Col, Card, Typography, Row, Divider, Image } from "antd";
+import Footer from "../../shared/components/Footer/index";
 
 import style from "./style.module.css";
 
@@ -87,6 +88,7 @@ const AboutUs = () => {
 					</a>
 				</Row>
 			</div>
+			<Footer />
 		</>
 	);
 };

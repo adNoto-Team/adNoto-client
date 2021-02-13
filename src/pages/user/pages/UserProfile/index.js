@@ -13,6 +13,7 @@ import PopulerComments from "./components/PopularComments";
 import Loading from "../../../../shared/components/Loading/index";
 import dummyUser from "../../../../DummyData/DummyUser";
 import SettingsModal from "./components/SettingsModal";
+import Footer from '../../../../shared/components/Footer/index';
 
 const { Content } = Layout;
 const { Meta } = Card;
@@ -154,6 +155,7 @@ const UserProfile = () => {
 						</Content>
 					</Layout>
 				</Col>
+				<Footer />
 			</>
 		);
 	}

@@ -4,6 +4,7 @@ import Movies from "../../DummyData/movies";
 import WithAdNoto from "./components/WithAdNoto";
 import BottomBar from "../../shared/components/BottomBar";
 import ContentRow from "./components/ContentRow";
+import Footer from '../../shared/components/Footer/index';
 
 import styles from "./style.module.css";
 
@@ -50,6 +51,7 @@ function Landing() {
 					<BottomBar />
 				</Layout>
 			</Col>
+			<Footer />
 		</>
 	);
 }
