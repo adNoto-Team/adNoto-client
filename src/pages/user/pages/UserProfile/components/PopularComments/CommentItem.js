@@ -24,9 +24,6 @@ const CommentItem = ({ author, avatar, from, content, likeCount }) => {
 		// <span key="comment-basic-reply-to">Reply to</span>,
 	];
 
-
-	console.log("FROMM", from);
-
 	return (
 		<div style={{ position: "relative" }}>
 			<Comment
